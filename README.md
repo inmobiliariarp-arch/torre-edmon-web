@@ -1,6 +1,6 @@
 # 🏢 Torre Edmond — Sitio Web Oficial e Interactivo
 
-[![Despliegue GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Deploy-success?style=for-the-badge&logo=github)](https://github.com)
+[![Despliegue GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Deploy-success?style=for-the-badge&logo=github)](https://inmobiliariarp-arch.github.io/torre-edmon-web/)
 [![Three.js](https://img.shields.io/badge/Three.js-WebGL%203D-black?style=for-the-badge&logo=three.js)](https://threejs.org/)
 [![Web Audio API](https://img.shields.io/badge/Web%20Audio%20API-Synthesizer-blue?style=for-the-badge)](https://developer.mozilla.org/es/docs/Web/API/Web_Audio_API)
 [![WebP Optimized](https://img.shields.io/badge/Images-WebP%20Optimized-orange?style=for-the-badge)](https://developers.google.com/speed/webp)
@@ -55,7 +55,7 @@ Sitio web interactivo de alta gama para la presentación arquitectónica y comer
 2. En GitHub, ingresa a **Settings > Pages** y en *Source* selecciona **GitHub Actions**.
 3. Tu sitio estará disponible en:
    ```
-   https://<TU_USUARIO>.github.io/torre-edmon-web/
+   https://inmobiliariarp-arch.github.io/torre-edmon-web/
    ```
 
 ### Opción 2: Vercel (Recomendado para Repositorios Privados)
