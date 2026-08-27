@@ -63,7 +63,7 @@ Sitio web interactivo de alta gama para la presentación arquitectónica y comer
 2. Haz clic en **Deploy**.
 3. Obtendrás una URL instantánea con SSL y CDN global:
    ```
-   https://edmondposadas.vercel.app
+   https://edmonposadas.vercel.app
    ```
 
 ---
