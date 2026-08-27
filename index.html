@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Torre Edmon | Posadas Misiones</title>
+  <meta name="description" content="Torre Edmon: Residencias exclusivas en Posadas Misiones. Comercializa Inmobiliaria Río Paraná.">
+  
+  <link rel="icon" type="image/png" href="assets/branding/logo_inmobiliaria_clean.png">
+
+  <!-- Typography: Cinzel & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+  <!-- Three.js Ambient Particle Background -->
+  <canvas id="three-canvas"></canvas>
+
+  <!-- Luxury Minimalist Navbar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-logo-wrap">
+        <img src="assets/branding/logo_inmobiliaria_clean.png" alt="Inmobiliaria Río Paraná" class="brand-logo-img">
+        <span class="brand-text">TORRE EDMON</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#proyecto" class="nav-link">El Proyecto</a></li>
+        <li><a href="#interiores" class="nav-link">Interiores</a></li>
+        <li><a href="#planta" class="nav-link">Planta Tipo</a></li>
+        <li><a href="#amenities" class="nav-link">Amenities</a></li>
+        <li><a href="#ubicacion" class="nav-link">Ubicación</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="assets/folleto_torre_edmon_posadas.pdf" download="FOLLETO_TORRE_EDMON_Posadas.pdf" class="btn-secondary-nav" title="Descargar Brochure Oficial">
+          <i class="fas fa-file-pdf"></i> <span>Brochure</span>
+        </a>
+
+        <button id="theme-toggle" class="btn-icon" aria-label="Cambiar Tema" title="Modo Claro">
+          <i id="theme-icon" class="fas fa-sun"></i>
+        </button>
+
+        <a href="https://wa.me/5493764765431?text=Hola%20Inmobiliaria%20R%C3%ADo%20Paran%C3%A1,%20quiero%20informaci%C3%B3n%20sobre%20Torre%20Edmon" target="_blank" class="btn-primary" title="Consultar por WhatsApp">
+          <i class="fab fa-whatsapp"></i> <span>Consultar</span>
+        </a>
+
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Abrir Menú">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section with Full-Bleed Drone Video -->
+  <header id="hero" class="hero">
+    <div class="hero-video-bg">
+      <video autoplay muted loop playsinline poster="assets/curated/exterior/exterior_02.webp">
+        <source src="assets/video_drone_costanera.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-content">
+      <div class="hero-tagline">Residencias Exclusivas</div>
+      <h1 class="hero-title">
+        TORRE EDMON<br>
+        <span class="text-gold-gradient">Posadas Misiones</span>
+      </h1>
+      <div class="hero-gold-divider"></div>
+
+      <div class="scroll-hint">
+        <span>Descubrir</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- El Proyecto (Editorial Minimalist Architecture) -->
+  <section id="proyecto">
+    <div class="container">
+      <div class="features-minimal-grid">
+        <div class="feature-editorial-text">
+          <div class="section-tag">Arquitectura & Exclusividad</div>
+          <h2 class="section-title" style="font-size: 2.3rem;">Conexión Única con el <span class="text-gold">Entorno</span></h2>
+          <p>
+            Con vistas panorámicas hacia la ciudad de Posadas y el río Paraná, cada unidad ofrece una conexión única con el entorno.
+          </p>
+          <p>
+            El complejo cuenta con veintiséis departamentos de 217 m² y 218 m² propios, diseñados con amplitud y luminosidad. Sus amenities incluyen gimnasio, terraza con SUM, solárium y piscina, además de <strong>55 cocheras con infraestructura para cargadores de vehículos eléctricos (EV Ready)</strong> y <strong>ascensores con acceso directo a los departamentos</strong> que garantizan máxima privacidad, comodidad y seguridad.
+          </p>
+          <div style="margin-top: 1.75rem;">
+            <a href="assets/folleto_torre_edmon_posadas.pdf" download="FOLLETO_TORRE_EDMON_Posadas.pdf" class="btn-primary" style="gap: 0.75rem;">
+              <i class="fas fa-download"></i> Descargar Brochure Oficial (PDF)
+            </a>
+          </div>
+        </div>
+        <div class="feature-editorial-img" data-lightbox data-hires="assets/curated/exterior/exterior_02.webp" data-caption="Fachada Principal - Torre Edmon">
+          <img src="assets/curated/exterior/exterior_02.webp" alt="Fachada Principal Torre Edmon">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interiores & Balcones (Architectural Monograph) -->
+  <section id="interiores" style="padding-top: 0;">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 3.5rem;">
+        <div class="section-tag">Detalles & Espacios</div>
+        <h2 class="section-title">Interiores & <span class="text-gold">Balcones</span></h2>
+      </div>
+
+      <div class="interiors-grid">
+        <!-- Balcon (ID #27) -->
+        <div class="interior-card" data-lightbox data-hires="assets/curated/interiores/interiores_27.webp" data-caption="Balcón Terraza con Parrilla Propia al Río Paraná">
+          <div class="interior-card-img">
+            <img src="assets/curated/interiores/interiores_27.webp" alt="Balcón Terraza con Parrilla al Río" loading="lazy">
+          </div>
+          <div>
+            <div class="interior-card-title">Balcón con Parrilla al Río</div>
+            <div class="interior-card-desc">Terraza individual con tiraje independiente y visuales directas al agua.</div>
+          </div>
+        </div>
+
+        <!-- Living (ID #26) -->
+        <div class="interior-card" data-lightbox data-hires="assets/curated/interiores/interiores_26.webp" data-caption="Living Comedor Apaisado con Vista al Río">
+          <div class="interior-card-img">
+            <img src="assets/curated/interiores/interiores_26.webp" alt="Living Comedor con Vista al Río" loading="lazy">
+          </div>
+          <div>
+            <div class="interior-card-title">Living Comedor Apaisado</div>
+            <div class="interior-card-desc">Amplios ventanales con doble vidriado hermético y ventilación cruzada.</div>
+          </div>
+        </div>
+
+        <!-- Master Bedroom (ID #28) -->
+        <div class="interior-card" data-lightbox data-hires="assets/curated/interiores/interiores_28.webp" data-caption="Master Bedroom con Vestidor">
+          <div class="interior-card-img">
+            <img src="assets/curated/interiores/interiores_28.webp" alt="Master Bedroom con Vestidor" loading="lazy">
+          </div>
+          <div>
+            <div class="interior-card-title">Master Bedroom</div>
+            <div class="interior-card-desc">Dormitorio principal con vestidor exclusivo y baño en suite.</div>
+          </div>
+        </div>
+
+        <!-- Cocina (ID #24) -->
+        <div class="interior-card" data-lightbox data-hires="assets/curated/interiores/interiores_24.webp" data-caption="Cocina Integrada con Isla">
+          <div class="interior-card-img">
+            <img src="assets/curated/interiores/interiores_24.webp" alt="Cocina Integrada" loading="lazy">
+          </div>
+          <div>
+            <div class="interior-card-title">Cocina Integrada</div>
+            <div class="interior-card-desc">Mobiliario a medida, mesadas de granito/cuarzo y barra desayunadora.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Planta Tipo (In-place Smooth & Tactile Zoom) -->
+  <section id="planta" style="padding-top: 2rem;">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 2.5rem;">
+        <div class="section-tag">Distribución</div>
+        <h2 class="section-title">Planta Tipo</h2>
+      </div>
+
+      <div class="plan-container-card">
+        <div id="plan-interactive-box" class="plan-interactive-wrapper">
+          <button class="plan-zoom-badge-btn" data-lightbox data-hires="assets/curated/plantas/plantas_34.webp" data-caption="Planta Tipo - Distribución Oficial">
+            <i class="fas fa-search-plus"></i> Zoom
+          </button>
+          <img id="plan-zoom-img" src="assets/curated/plantas/plantas_34.webp" alt="Planta Tipo Torre Edmon">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Amenities (Curated Clean Visual Cards) -->
+  <section id="amenities">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 3.5rem;">
+        <div class="section-tag">Espacios Comunes</div>
+        <h2 class="section-title">Amenities</h2>
+      </div>
+
+      <div class="amenities-grid">
+        <!-- Piscina en terraza (ID #31) -->
+        <div class="amenity-card" data-lightbox data-hires="assets/curated/amenities/amenities_31.webp" data-caption="Piscina en Terraza">
+          <div class="amenity-img-wrap">
+            <img src="assets/curated/amenities/amenities_31.webp" alt="Piscina en terraza" loading="lazy">
+          </div>
+          <h3>Piscina en Terraza</h3>
+          <p>Ubicada en la azotea con vistas panorámicas al Río Paraná.</p>
+        </div>
+
+        <!-- Solárium (ID #30) -->
+        <div class="amenity-card" data-lightbox data-hires="assets/curated/amenities/amenities_30.webp" data-caption="Solárium">
+          <div class="amenity-img-wrap">
+            <img src="assets/curated/amenities/amenities_30.webp" alt="Solárium" loading="lazy">
+          </div>
+          <h3>Solárium</h3>
+          <p>Deck exterior de descanso y relax al aire libre.</p>
+        </div>
+
+        <!-- Gym (ID #32) -->
+        <div class="amenity-card" data-lightbox data-hires="assets/curated/amenities/amenities_32.webp" data-caption="Gym">
+          <div class="amenity-img-wrap">
+            <img src="assets/curated/amenities/amenities_32.webp" alt="Gym" loading="lazy">
+          </div>
+          <h3>Gym</h3>
+          <p>Espacio fitness completamente equipado con vistas abiertas.</p>
+        </div>
+
+        <!-- Hall acceso (ID #12) -->
+        <div class="amenity-card" data-lightbox data-hires="assets/curated/amenities/amenities_12.webp" data-caption="Hall de Acceso">
+          <div class="amenity-img-wrap">
+            <img src="assets/curated/amenities/amenities_12.webp" alt="Hall de acceso" loading="lazy">
+          </div>
+          <h3>Hall de Acceso</h3>
+          <p>Ingreso jerarquizado con recepción y control de acceso 24hs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ubicación del Proyecto -->
+  <section id="ubicacion">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 2.5rem;">
+        <div class="section-tag">Ubicación del Proyecto</div>
+        <h2 class="section-title">Posadas, <span class="text-gold">Misiones</span></h2>
+        <p class="section-subtitle" style="margin: 0 auto 2.5rem;">
+          Emplazado en una ubicación costera privilegiada sobre la Costanera de Posadas, con rápido acceso y visuales directas al Río Paraná.
+        </p>
+      </div>
+
+      <div class="location-map-master-wrap" data-lightbox data-hires="assets/curated/exterior/mapa_ubicacion_masterplan.webp" data-caption="Masterplan de Ubicación - Torre Edmon, Posadas Misiones">
+        <img src="assets/curated/exterior/mapa_ubicacion_masterplan.webp" alt="Masterplan Ubicación Torre Edmon">
+        <div class="plan-caption-hint" style="margin-top: 1rem;"><i class="fas fa-search-plus"></i> Haz clic en el mapa para ampliar en alta definición</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comercialización Oficial & Contacto (Quiet Luxury Monograph) -->
+  <footer id="contacto" class="luxury-footer">
+    <div class="container">
+      <div class="footer-monograph">
+        <img src="assets/branding/logo_inmobiliaria_clean.png" alt="Inmobiliaria Río Paraná" class="footer-brand-logo">
+        
+        <div class="footer-title-wrap">
+          <span class="footer-tag">Comercializa</span>
+          <h2 class="footer-brand-name">Inmobiliaria Río Paraná</h2>
+          <p class="footer-subtitle">Para consultas, precios y disponibilidad de unidades en Torre Edmon.</p>
+        </div>
+
+        <div class="footer-contact-pills">
+          <a href="mailto:inmobiliariarp@gmail.com" class="contact-pill-link">
+            <i class="fas fa-envelope"></i> inmobiliariarp@gmail.com
+          </a>
+          <a href="https://wa.me/5493764765431?text=Hola%20Inmobiliaria%20R%C3%ADo%20Paran%C3%A1,%20quiero%20consultar%20por%20Torre%20Edmon" target="_blank" class="contact-pill-link highlight">
+            <i class="fab fa-whatsapp"></i> +54 9 3764 765431
+          </a>
+          <span class="contact-pill-text">
+            <i class="fas fa-map-marker-alt"></i> Posadas, Misiones
+          </span>
+        </div>
+
+        <div class="footer-legal">
+          <p>&copy; 2026 <strong>TORRE EDMON</strong> • Desarrollos Inmobiliarios de Alta Gama. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal for Full Resolution Views -->
+  <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-hidden="true">
+    <div class="lightbox-content">
+      <button id="lightbox-close" class="lightbox-close" aria-label="Cerrar">&times;</button>
+      <img id="lightbox-img" src="" alt="Vista previa" class="lightbox-img">
+      <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Application Scripts -->
+  <script src="js/three-scene.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

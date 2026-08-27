@@ -1,0 +1,246 @@
+{
+  "exterior": [
+    {
+      "id": "02",
+      "category": "exterior",
+      "label": "Fachada principal",
+      "src": "assets/curated/exterior/exterior_02.webp",
+      "width": 1580,
+      "height": 1293,
+      "size_kb": 397.4
+    },
+    {
+      "id": "03",
+      "category": "exterior",
+      "label": "Ubicacion del edificio",
+      "src": "assets/curated/exterior/exterior_03.webp",
+      "width": 1967,
+      "height": 1313,
+      "size_kb": 111.0
+    },
+    {
+      "id": "05",
+      "category": "exterior",
+      "label": "Entorno costero",
+      "src": "assets/curated/exterior/exterior_05.webp",
+      "width": 1681,
+      "height": 1293,
+      "size_kb": 709.8
+    },
+    {
+      "id": "06",
+      "category": "exterior",
+      "label": "Vista diurna",
+      "src": "assets/curated/exterior/exterior_06.webp",
+      "width": 2200,
+      "height": 1238,
+      "size_kb": 282.6
+    },
+    {
+      "id": "07",
+      "category": "exterior",
+      "label": "Fachada y calle",
+      "src": "assets/curated/exterior/exterior_07.webp",
+      "width": 1829,
+      "height": 1293,
+      "size_kb": 682.3
+    },
+    {
+      "id": "08",
+      "category": "exterior",
+      "label": "Balcones al rio",
+      "src": "assets/curated/exterior/exterior_08.webp",
+      "width": 1916,
+      "height": 1293,
+      "size_kb": 375.0
+    },
+    {
+      "id": "09",
+      "category": "exterior",
+      "label": "Detalles arquitectura",
+      "src": "assets/curated/exterior/exterior_09.webp",
+      "width": 1878,
+      "height": 1293,
+      "size_kb": 406.4
+    },
+    {
+      "id": "10",
+      "category": "exterior",
+      "label": "Render #10",
+      "src": "assets/curated/exterior/exterior_10.webp",
+      "width": 2200,
+      "height": 1237,
+      "size_kb": 590.6
+    },
+    {
+      "id": "13",
+      "category": "exterior",
+      "label": "Render #13",
+      "src": "assets/curated/exterior/exterior_13.webp",
+      "width": 2200,
+      "height": 1237,
+      "size_kb": 632.8
+    },
+    {
+      "id": "15",
+      "category": "exterior",
+      "label": "Render #15",
+      "src": "assets/curated/exterior/exterior_15.webp",
+      "width": 2200,
+      "height": 1237,
+      "size_kb": 738.9
+    },
+    {
+      "id": "16",
+      "category": "exterior",
+      "label": "Render #16",
+      "src": "assets/curated/exterior/exterior_16.webp",
+      "width": 2200,
+      "height": 1237,
+      "size_kb": 513.3
+    },
+    {
+      "id": "17",
+      "category": "exterior",
+      "label": "Hall acceso",
+      "src": "assets/curated/exterior/exterior_17.webp",
+      "width": 2200,
+      "height": 1237,
+      "size_kb": 556.6
+    },
+    {
+      "id": "18",
+      "category": "exterior",
+      "label": "Render #18",
+      "src": "assets/curated/exterior/exterior_18.webp",
+      "width": 2200,
+      "height": 1237,
+      "size_kb": 582.4
+    },
+    {
+      "id": "19",
+      "category": "exterior",
+      "label": "Hall acceso nocturno",
+      "src": "assets/curated/exterior/exterior_19.webp",
+      "width": 2200,
+      "height": 1237,
+      "size_kb": 438.6
+    }
+  ],
+  "amenities": [
+    {
+      "id": "12",
+      "category": "amenities",
+      "label": "Hall acceso",
+      "src": "assets/curated/amenities/amenities_12.webp",
+      "width": 2200,
+      "height": 1237,
+      "size_kb": 341.0
+    },
+    {
+      "id": "14",
+      "category": "amenities",
+      "label": "Hall acceso",
+      "src": "assets/curated/amenities/amenities_14.webp",
+      "width": 2200,
+      "height": 1237,
+      "size_kb": 406.8
+    },
+    {
+      "id": "30",
+      "category": "amenities",
+      "label": "Solarium en terraza",
+      "src": "assets/curated/amenities/amenities_30.webp",
+      "width": 2200,
+      "height": 1382,
+      "size_kb": 220.7
+    },
+    {
+      "id": "31",
+      "category": "amenities",
+      "label": "Piscina en terraza",
+      "src": "assets/curated/amenities/amenities_31.webp",
+      "width": 2200,
+      "height": 1238,
+      "size_kb": 280.4
+    },
+    {
+      "id": "32",
+      "category": "amenities",
+      "label": "SUM quincho",
+      "src": "assets/curated/amenities/amenities_32.webp",
+      "width": 2200,
+      "height": 1238,
+      "size_kb": 275.8
+    }
+  ],
+  "interiores": [
+    {
+      "id": "24",
+      "category": "interiores",
+      "label": "Cocina",
+      "src": "assets/curated/interiores/interiores_24.webp",
+      "width": 2200,
+      "height": 1238,
+      "size_kb": 170.0
+    },
+    {
+      "id": "26",
+      "category": "interiores",
+      "label": "Living",
+      "src": "assets/curated/interiores/interiores_26.webp",
+      "width": 2200,
+      "height": 1237,
+      "size_kb": 425.2
+    },
+    {
+      "id": "27",
+      "category": "interiores",
+      "label": "Balcon",
+      "src": "assets/curated/interiores/interiores_27.webp",
+      "width": 2200,
+      "height": 1237,
+      "size_kb": 453.4
+    },
+    {
+      "id": "28",
+      "category": "interiores",
+      "label": "Master bedroom",
+      "src": "assets/curated/interiores/interiores_28.webp",
+      "width": 2200,
+      "height": 1237,
+      "size_kb": 381.0
+    }
+  ],
+  "plantas": [
+    {
+      "id": "34",
+      "category": "plantas",
+      "label": "distribucion",
+      "src": "assets/curated/plantas/plantas_34.webp",
+      "width": 1588,
+      "height": 893,
+      "size_kb": 224.5
+    }
+  ],
+  "branding": [
+    {
+      "id": "01",
+      "category": "branding",
+      "label": "Logo del edificio",
+      "src": "assets/curated/branding/branding_01.webp",
+      "width": 2200,
+      "height": 1238,
+      "size_kb": 270.7
+    },
+    {
+      "id": "33",
+      "category": "branding",
+      "label": "logo inmobiliaria rio parana",
+      "src": "assets/curated/branding/branding_33.webp",
+      "width": 1172,
+      "height": 984,
+      "size_kb": 181.9
+    }
+  ]
+}

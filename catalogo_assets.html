@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estudio de Curaduría y Recorte de Assets - Torre Edmon</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Cropper.js for visual trimming -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #090b0e;
+      --card-bg: #12151d;
+      --panel-bg: #181d28;
+      --panel-elevated: #1f2533;
+      --gold: #c5a059;
+      --gold-light: #e5c158;
+      --gold-glow: rgba(197, 160, 89, 0.35);
+      --success: #00e676;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --border: rgba(255, 255, 255, 0.1);
+      --border-gold: rgba(197, 160, 89, 0.45);
+      --radius: 12px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 2rem 1.5rem 6rem;
+    }
+    .top-bar {
+      max-width: 1400px;
+      margin: 0 auto 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .title-area h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      color: var(--gold-light);
+      letter-spacing: 0.05em;
+    }
+    .title-area p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-top: 0.25rem;
+    }
+    .top-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+      transition: all 0.25s ease;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, #f3d489 0%, #c5a059 100%);
+      color: #000;
+      box-shadow: 0 4px 15px var(--gold-glow);
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(197, 160, 89, 0.5);
+    }
+    .btn-secondary {
+      background: var(--panel-bg);
+      color: #fff;
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      border-color: var(--gold);
+    }
+    .btn-danger {
+      background: rgba(239, 68, 68, 0.15);
+      color: #ef4444;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+    .btn-danger:hover {
+      background: #ef4444;
+      color: #fff;
+    }
+    
+    .stats-bar {
+      max-width: 1400px;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .stat-pill {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .stat-pill strong {
+      color: var(--gold);
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.75rem;
+      max-width: 1400px;
+      margin: 0 auto 3rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+    }
+    .card.classified {
+      border-color: var(--success);
+      box-shadow: 0 0 0 2px rgba(0, 230, 118, 0.3);
+    }
+    .badge-id {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(0, 0, 0, 0.85);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      z-index: 2;
+      backdrop-filter: blur(6px);
+    }
+    .badge-category {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: var(--success);
+      color: #000;
+      font-weight: 800;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      z-index: 2;
+      text-transform: uppercase;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+    .badge-discarded {
+      background: #ef4444 !important;
+      color: #fff !important;
+    }
+    .card-img-wrap {
+      width: 100%;
+      height: 200px;
+      background: #000;
+      overflow: hidden;
+      position: relative;
+    }
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .card:hover .card-img-wrap img {
+      transform: scale(1.05);
+    }
+    .card-body {
+      padding: 1.25rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #fff;
+      margin-bottom: 0.25rem;
+    }
+    .card-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+    .card-btn-action {
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      color: var(--gold);
+      padding: 0.55rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+    .card:hover .card-btn-action {
+      background: var(--gold);
+      color: #000;
+      border-color: transparent;
+    }
+
+    /* Modal Editor */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.94);
+      backdrop-filter: blur(14px);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .modal-overlay.active {
+      display: flex !important;
+    }
+    .modal-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border-gold);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 1200px;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
+    }
+    .modal-header {
+      padding: 1.25rem 1.75rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--panel-bg);
+    }
+    .modal-header h2 {
+      font-size: 1.3rem;
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .close-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.8rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .close-btn:hover {
+      color: #fff;
+    }
+    .modal-body {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      flex: 1;
+      overflow-y: auto;
+    }
+    .cropper-container-wrap {
+      background: #050608;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 480px;
+      border-right: 1px solid var(--border);
+    }
+    .cropper-img-wrapper {
+      max-width: 100%;
+      max-height: 440px;
+    }
+    .cropper-img-wrapper img {
+      max-width: 100%;
+      display: block;
+    }
+    .cropper-tools-bar {
+      margin-top: 1rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .tool-btn {
+      padding: 0.4rem 0.8rem;
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 6px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+    .tool-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    
+    .curation-panel {
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      overflow-y: auto;
+    }
+    .panel-section-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .category-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .category-radio-label {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.92rem;
+    }
+    .category-radio-label:hover {
+      border-color: var(--gold-light);
+    }
+    .category-radio-label.selected {
+      border-color: var(--gold);
+      background: rgba(197, 160, 89, 0.15);
+      color: #fff;
+    }
+    .category-radio-label input {
+      accent-color: var(--gold);
+    }
+    
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .input-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .text-input {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--panel-bg);
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+    .text-input:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 2px var(--gold-glow);
+    }
+    
+    .modal-footer {
+      padding: 1.25rem 1.75rem;
+      border-top: 1px solid var(--border);
+      background: var(--panel-bg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--panel-elevated);
+      border: 1px solid var(--success);
+      color: #fff;
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      z-index: 10000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .toast.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    @media (max-width: 900px) {
+      .modal-body { grid-template-columns: 1fr; }
+      .cropper-container-wrap { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="title-area">
+      <h1>TORRE EDMON • CURADOR & RECORTE DE ASSETS</h1>
+      <p>Catálogo completo con <strong>35 Assets</strong>. Incluye el nuevo <strong>Mapa Masterplan con Pin (ID #35)</strong>.</p>
+    </div>
+    <div class="top-actions">
+      <button class="btn btn-secondary" onclick="exportData()"><i class="fas fa-download"></i> Descargar JSON</button>
+      <button class="btn btn-gold" onclick="finishAndReprocess()"><i class="fas fa-magic"></i> Reprocesar Todos los Assets</button>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-pill"><i class="fas fa-images"></i> Total: <strong>35 imágenes</strong></div>
+    <div class="stat-pill"><i class="fas fa-check-circle" style="color:var(--success)"></i> Clasificadas: <strong id="stat-classified">0</strong></div>
+    <div class="stat-pill"><i class="fas fa-building"></i> Exteriores: <strong id="stat-exterior">0</strong></div>
+    <div class="stat-pill"><i class="fas fa-swimming-pool"></i> Amenities: <strong id="stat-amenities">0</strong></div>
+    <div class="stat-pill"><i class="fas fa-couch"></i> Interiores: <strong id="stat-interiores">0</strong></div>
+    <div class="stat-pill"><i class="fas fa-drafting-compass"></i> Plantas & Mapas: <strong id="stat-plantas">0</strong></div>
+  </div>
+
+  <div class="grid" id="assets-grid">
+    <!-- Generated dynamically -->
+  </div>
+
+  <!-- Modal Editor -->
+  <div id="editor-modal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2 id="modal-item-title"><i class="fas fa-sliders-h"></i> Curar Asset</h2>
+        <button class="close-btn" onclick="closeEditor()">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="cropper-container-wrap">
+          <div class="cropper-img-wrapper">
+            <img id="cropper-image" src="" alt="Editar render">
+          </div>
+          <div class="cropper-tools-bar">
+            <button class="tool-btn" onclick="setRatio(NaN)"><i class="fas fa-vector-square"></i> Libre</button>
+            <button class="tool-btn" onclick="setRatio(16/9)">16:9</button>
+            <button class="tool-btn" onclick="setRatio(4/3)">4:3</button>
+            <button class="tool-btn" onclick="resetCrop()"><i class="fas fa-undo"></i> Restablecer</button>
+          </div>
+        </div>
+
+        <div class="curation-panel">
+          <div>
+            <div class="panel-section-title"><i class="fas fa-tags"></i> 1. Categoría</div>
+            <div class="category-options">
+              <label class="category-radio-label" onclick="selectCatRadio(this)">
+                <input type="radio" name="cat_choice" value="exterior">
+                <span>🏢 <strong>Exterior / Fachadas & Mapa</strong></span>
+              </label>
+
+              <label class="category-radio-label" onclick="selectCatRadio(this)">
+                <input type="radio" name="cat_choice" value="amenities">
+                <span>🏊 <strong>Amenities</strong> (Piscina, Solárium, SUM, Gym, Hall)</span>
+              </label>
+
+              <label class="category-radio-label" onclick="selectCatRadio(this)">
+                <input type="radio" name="cat_choice" value="interiores">
+                <span>🛋️ <strong>Interiores</strong> (Balcón, Living, Master Suite, Cocina)</span>
+              </label>
+
+              <label class="category-radio-label" onclick="selectCatRadio(this)">
+                <input type="radio" name="cat_choice" value="plantas">
+                <span>📐 <strong>Plantas & Planos</strong></span>
+              </label>
+
+              <label class="category-radio-label" onclick="selectCatRadio(this)">
+                <input type="radio" name="cat_choice" value="descartar">
+                <span>❌ <strong>Descartar / No usar</strong></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="item-label-input">2. Título o Descripción</label>
+            <input type="text" id="item-label-input" class="text-input" placeholder="Ej. Mapa Masterplan Posadas">
+          </div>
+
+          <div class="input-group">
+            <label>Detalles Técnicos</label>
+            <div id="item-meta-details" style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeEditor()">Cancelar</button>
+        <button class="btn btn-gold" onclick="saveAndCloseCurrent()"><i class="fas fa-check"></i> Guardar Cambios y Continuar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">
+    <i class="fas fa-check-circle" style="color:var(--success); font-size:1.4rem;"></i>
+    <span id="toast-msg">Cambios guardados exitosamente</span>
+  </div>
+
+  <script>
+    const ASSETS_DATA = [{"id": "01", "webp": "assets/catalog_previews/render_01.webp", "raw": "assets/raw_pure_extracted/img_01_p01_2666x1499.jpeg", "res": "2666x1499", "w": 2666, "h": 1499, "is_new": false, "filename": "img_01_p01_2666x1499.jpeg", "default_label": "Render #01"}, {"id": "02", "webp": "assets/catalog_previews/render_02.webp", "raw": "assets/raw_pure_extracted/img_02_p02_2420x1361.jpeg", "res": "2420x1361", "w": 2420, "h": 1361, "is_new": false, "filename": "img_02_p02_2420x1361.jpeg", "default_label": "Render #02"}, {"id": "03", "webp": "assets/catalog_previews/render_03.webp", "raw": "assets/raw_pure_extracted/img_03_p03_2666x1499.jpeg", "res": "2666x1499", "w": 2666, "h": 1499, "is_new": false, "filename": "img_03_p03_2666x1499.jpeg", "default_label": "Render #03"}, {"id": "04", "webp": "assets/catalog_previews/render_04.webp", "raw": "assets/raw_pure_extracted/img_04_p04_2666x1499.jpeg", "res": "2666x1499", "w": 2666, "h": 1499, "is_new": false, "filename": "img_04_p04_2666x1499.jpeg", "default_label": "Render #04"}, {"id": "05", "webp": "assets/catalog_previews/render_05.webp", "raw": "assets/raw_pure_extracted/img_05_p05_2420x1361.jpeg", "res": "2420x1361", "w": 2420, "h": 1361, "is_new": false, "filename": "img_05_p05_2420x1361.jpeg", "default_label": "Render #05"}, {"id": "06", "webp": "assets/catalog_previews/render_06.webp", "raw": "assets/raw_pure_extracted/img_06_p06_2666x1499.jpeg", "res": "2666x1499", "w": 2666, "h": 1499, "is_new": false, "filename": "img_06_p06_2666x1499.jpeg", "default_label": "Render #06"}, {"id": "07", "webp": "assets/catalog_previews/render_07.webp", "raw": "assets/raw_pure_extracted/img_07_p07_2420x1361.jpeg", "res": "2420x1361", "w": 2420, "h": 1361, "is_new": false, "filename": "img_07_p07_2420x1361.jpeg", "default_label": "Render #07"}, {"id": "08", "webp": "assets/catalog_previews/render_08.webp", "raw": "assets/raw_pure_extracted/img_08_p08_2420x1361.jpeg", "res": "2420x1361", "w": 2420, "h": 1361, "is_new": false, "filename": "img_08_p08_2420x1361.jpeg", "default_label": "Render #08"}, {"id": "09", "webp": "assets/catalog_previews/render_09.webp", "raw": "assets/raw_pure_extracted/img_09_p09_2420x1361.jpeg", "res": "2420x1361", "w": 2420, "h": 1361, "is_new": false, "filename": "img_09_p09_2420x1361.jpeg", "default_label": "Render #09"}, {"id": "10", "webp": "assets/catalog_previews/render_10.webp", "raw": "assets/raw_pure_extracted/img_10_p10_2420x1361.jpeg", "res": "2420x1361", "w": 2420, "h": 1361, "is_new": false, "filename": "img_10_p10_2420x1361.jpeg", "default_label": "Render #10"}, {"id": "11", "webp": "assets/catalog_previews/render_11.webp", "raw": "assets/raw_pure_extracted/img_11_p11_2666x1499.jpeg", "res": "2666x1499", "w": 2666, "h": 1499, "is_new": false, "filename": "img_11_p11_2666x1499.jpeg", "default_label": "Render #11"}, {"id": "12", "webp": "assets/catalog_previews/render_12.webp", "raw": "assets/raw_pure_extracted/img_12_p12_2420x1361.jpeg", "res": "2420x1361", "w": 2420, "h": 1361, "is_new": false, "filename": "img_12_p12_2420x1361.jpeg", "default_label": "Render #12"}, {"id": "13", "webp": "assets/catalog_previews/render_13.webp", "raw": "assets/raw_pure_extracted/img_13_p13_2420x1361.jpeg", "res": "2420x1361", "w": 2420, "h": 1361, "is_new": false, "filename": "img_13_p13_2420x1361.jpeg", "default_label": "Render #13"}, {"id": "14", "webp": "assets/catalog_previews/render_14.webp", "raw": "assets/raw_pure_extracted/img_14_p14_2420x1361.jpeg", "res": "2420x1361", "w": 2420, "h": 1361, "is_new": false, "filename": "img_14_p14_2420x1361.jpeg", "default_label": "Render #14"}, {"id": "15", "webp": "assets/catalog_previews/render_15.webp", "raw": "assets/raw_pure_extracted/img_15_p15_2420x1361.jpeg", "res": "2420x1361", "w": 2420, "h": 1361, "is_new": false, "filename": "img_15_p15_2420x1361.jpeg", "default_label": "Render #15"}, {"id": "16", "webp": "assets/catalog_previews/render_16.webp", "raw": "assets/raw_pure_extracted/img_16_p16_2420x1361.jpeg", "res": "2420x1361", "w": 2420, "h": 1361, "is_new": false, "filename": "img_16_p16_2420x1361.jpeg", "default_label": "Render #16"}, {"id": "17", "webp": "assets/catalog_previews/render_17.webp", "raw": "assets/raw_pure_extracted/img_17_p17_2420x1361.jpeg", "res": "2420x1361", "w": 2420, "h": 1361, "is_new": false, "filename": "img_17_p17_2420x1361.jpeg", "default_label": "Render #17"}, {"id": "18", "webp": "assets/catalog_previews/render_18.webp", "raw": "assets/raw_pure_extracted/img_18_p18_2420x1361.jpeg", "res": "2420x1361", "w": 2420, "h": 1361, "is_new": false, "filename": "img_18_p18_2420x1361.jpeg", "default_label": "Render #18"}, {"id": "19", "webp": "assets/catalog_previews/render_19.webp", "raw": "assets/raw_pure_extracted/img_19_p19_2420x1361.jpeg", "res": "2420x1361", "w": 2420, "h": 1361, "is_new": false, "filename": "img_19_p19_2420x1361.jpeg", "default_label": "Render #19"}, {"id": "20", "webp": "assets/catalog_previews/render_20.webp", "raw": "assets/raw_pure_extracted/img_20_p20_2666x1499.jpeg", "res": "2666x1499", "w": 2666, "h": 1499, "is_new": false, "filename": "img_20_p20_2666x1499.jpeg", "default_label": "Render #20"}, {"id": "21", "webp": "assets/catalog_previews/render_21.webp", "raw": "assets/raw_pure_extracted/img_21_p21_2934x1651.jpeg", "res": "2934x1651", "w": 2934, "h": 1651, "is_new": false, "filename": "img_21_p21_2934x1651.jpeg", "default_label": "Render #21"}, {"id": "22", "webp": "assets/catalog_previews/render_22.webp", "raw": "assets/raw_pure_extracted/img_23_p22_2934x1651.jpeg", "res": "2934x1651", "w": 2934, "h": 1651, "is_new": false, "filename": "img_23_p22_2934x1651.jpeg", "default_label": "Render #22"}, {"id": "23", "webp": "assets/catalog_previews/render_23.webp", "raw": "assets/raw_pure_extracted/img_25_p23_2666x1499.jpeg", "res": "2666x1499", "w": 2666, "h": 1499, "is_new": false, "filename": "img_25_p23_2666x1499.jpeg", "default_label": "Render #23"}, {"id": "24", "webp": "assets/catalog_previews/render_24.webp", "raw": "assets/raw_pure_extracted/img_26_p24_2666x1499.jpeg", "res": "2666x1499", "w": 2666, "h": 1499, "is_new": false, "filename": "img_26_p24_2666x1499.jpeg", "default_label": "Render #24"}, {"id": "25", "webp": "assets/catalog_previews/render_25.webp", "raw": "assets/raw_pure_extracted/img_27_p25_2420x1361.jpeg", "res": "2420x1361", "w": 2420, "h": 1361, "is_new": false, "filename": "img_27_p25_2420x1361.jpeg", "default_label": "Render #25"}, {"id": "26", "webp": "assets/catalog_previews/render_26.webp", "raw": "assets/raw_pure_extracted/img_28_p26_2420x1361.jpeg", "res": "2420x1361", "w": 2420, "h": 1361, "is_new": false, "filename": "img_28_p26_2420x1361.jpeg", "default_label": "Render #26"}, {"id": "27", "webp": "assets/catalog_previews/render_27.webp", "raw": "assets/raw_pure_extracted/img_29_p27_2420x1361.jpeg", "res": "2420x1361", "w": 2420, "h": 1361, "is_new": false, "filename": "img_29_p27_2420x1361.jpeg", "default_label": "Render #27"}, {"id": "28", "webp": "assets/catalog_previews/render_28.webp", "raw": "assets/raw_pure_extracted/img_30_p28_2420x1361.jpeg", "res": "2420x1361", "w": 2420, "h": 1361, "is_new": false, "filename": "img_30_p28_2420x1361.jpeg", "default_label": "Render #28"}, {"id": "29", "webp": "assets/catalog_previews/render_29.webp", "raw": "assets/raw_pure_extracted/img_31_p29_2666x1499.jpeg", "res": "2666x1499", "w": 2666, "h": 1499, "is_new": false, "filename": "img_31_p29_2666x1499.jpeg", "default_label": "Render #29"}, {"id": "30", "webp": "assets/catalog_previews/render_30.webp", "raw": "assets/raw_pure_extracted/img_32_p30_2666x1499.jpeg", "res": "2666x1499", "w": 2666, "h": 1499, "is_new": false, "filename": "img_32_p30_2666x1499.jpeg", "default_label": "Render #30"}, {"id": "31", "webp": "assets/catalog_previews/render_31.webp", "raw": "assets/raw_pure_extracted/img_33_p31_2666x1499.jpeg", "res": "2666x1499", "w": 2666, "h": 1499, "is_new": false, "filename": "img_33_p31_2666x1499.jpeg", "default_label": "Render #31"}, {"id": "32", "webp": "assets/catalog_previews/render_32.webp", "raw": "assets/raw_pure_extracted/img_34_p32_2666x1499.jpeg", "res": "2666x1499", "w": 2666, "h": 1499, "is_new": false, "filename": "img_34_p32_2666x1499.jpeg", "default_label": "Render #32"}, {"id": "33", "webp": "assets/catalog_previews/render_33.webp", "raw": "assets/raw_pure_extracted/img_35_p33_2666x1499.jpeg", "res": "2666x1499", "w": 2666, "h": 1499, "is_new": false, "filename": "img_35_p33_2666x1499.jpeg", "default_label": "Render #33"}, {"id": "34", "webp": "assets/catalog_previews/render_34_planta_render.webp", "raw": "assets/plantas render.png", "res": "1672x941", "w": 1672, "h": 941, "is_new": true, "filename": "plantas render.png", "default_label": "Planta Oficial de Distribución"}, {"id": "35", "webp": "assets/mapa_ubicacion_masterplan.webp", "raw": "assets/mapa_ubicacion_masterplan.webp", "res": "1024x523", "w": 1024, "h": 523, "is_new": true, "filename": "mapa_ubicacion_masterplan.webp", "default_label": "Mapa Masterplan Posadas (con Pin Torre Edmon)"}];
+    let curationState = JSON.parse(localStorage.getItem('torre_edmon_curation') || '{}');
+    let currentItem = null;
+    let cropper = null;
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').textContent = msg;
+      toast.classList.add('active');
+      setTimeout(() => toast.classList.remove('active'), 2500);
+    }
+
+    function renderGrid() {
+      const container = document.getElementById('assets-grid');
+      container.innerHTML = '';
+
+      let countClassified = 0;
+      let countExt = 0, countAmen = 0, countInt = 0, countPlan = 0;
+
+      ASSETS_DATA.forEach(item => {
+        const saved = curationState[item.id];
+        const hasSaved = !!saved && !!saved.category;
+        
+        if (hasSaved) {
+          countClassified++;
+          if (saved.category === 'exterior') countExt++;
+          if (saved.category === 'amenities') countAmen++;
+          if (saved.category === 'interiores') countInt++;
+          if (saved.category === 'plantas') countPlan++;
+        }
+
+        const card = document.createElement('div');
+        card.className = `card ${hasSaved ? 'classified' : ''}`;
+        card.onclick = () => openEditor(item);
+
+        let catBadge = '';
+        if (hasSaved) {
+          const isDisc = saved.category === 'descartar';
+          const labels = {
+            'exterior': '🏢 Exterior',
+            'amenities': '🏊 Amenities',
+            'interiores': '🛋️ Interiores',
+            'plantas': '📐 Plantas',
+            'descartar': '❌ Descartada'
+          };
+          catBadge = `<span class="badge-category ${isDisc ? 'badge-discarded' : ''}">${labels[saved.category] || saved.category}</span>`;
+        } else if (item.is_new) {
+          catBadge = `<span class="badge-category" style="background:#00e676;">NUEVO ASSET</span>`;
+        }
+
+        card.innerHTML = `
+          <span class="badge-id">ID #${item.id}</span>
+          ${catBadge}
+          <div class="card-img-wrap">
+            <img src="${item.webp}" alt="Asset #${item.id}" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div>
+              <div class="card-title">${hasSaved && saved.label ? saved.label : item.default_label}</div>
+              <div class="card-meta">${item.res} px • ${item.filename}</div>
+            </div>
+            <div class="card-btn-action">
+              <i class="fas fa-crop-alt"></i> ${hasSaved ? 'Modificar Recorte / Categoría' : 'Recortar y Categorizar'}
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      document.getElementById('stat-classified').textContent = `${countClassified} / ${ASSETS_DATA.length}`;
+      document.getElementById('stat-exterior').textContent = countExt;
+      document.getElementById('stat-amenities').textContent = countAmen;
+      document.getElementById('stat-interiores').textContent = countInt;
+      document.getElementById('stat-plantas').textContent = countPlan;
+    }
+
+    function openEditor(item) {
+      currentItem = item;
+      const saved = curationState[item.id] || {};
+
+      document.getElementById('modal-item-title').innerHTML = `<i class="fas fa-sliders-h"></i> Curar Asset ID #${item.id}`;
+      document.getElementById('item-label-input').value = saved.label || item.default_label;
+      document.getElementById('item-meta-details').innerHTML = `
+        <strong>Archivo:</strong> ${item.filename}<br>
+        <strong>Dimensiones:</strong> ${item.res} px
+      `;
+
+      document.querySelectorAll('.category-radio-label').forEach(label => {
+        label.classList.remove('selected');
+        const radio = label.querySelector('input');
+        if (saved.category && radio.value === saved.category) {
+          radio.checked = true;
+          label.classList.add('selected');
+        } else {
+          radio.checked = false;
+        }
+      });
+
+      const imgEl = document.getElementById('cropper-image');
+      imgEl.src = item.raw;
+
+      document.getElementById('editor-modal').classList.add('active');
+
+      if (cropper) {
+        cropper.destroy();
+        cropper = null;
+      }
+
+      imgEl.onload = () => {
+        try {
+          cropper = new Cropper(imgEl, {
+            viewMode: 1,
+            autoCropArea: saved.cropData ? undefined : 0.95,
+            data: saved.cropData || null,
+            responsive: true,
+            restore: true
+          });
+        } catch(e) {}
+      };
+    }
+
+    function selectCatRadio(labelEl) {
+      document.querySelectorAll('.category-radio-label').forEach(l => l.classList.remove('selected'));
+      labelEl.classList.add('selected');
+      const radio = labelEl.querySelector('input');
+      radio.checked = true;
+    }
+
+    function setRatio(ratio) {
+      if (cropper) cropper.setAspectRatio(ratio);
+    }
+
+    function resetCrop() {
+      if (cropper) cropper.reset();
+    }
+
+    function closeEditor() {
+      const modal = document.getElementById('editor-modal');
+      if (modal) modal.classList.remove('active');
+      if (cropper) {
+        try { cropper.destroy(); } catch(e) {}
+        cropper = null;
+      }
+      currentItem = null;
+    }
+
+    function saveAndCloseCurrent() {
+      if (!currentItem) return;
+
+      const selectedRadio = document.querySelector('input[name="cat_choice"]:checked');
+      const category = selectedRadio ? selectedRadio.value : 'exterior';
+      const label = document.getElementById('item-label-input').value.trim();
+
+      let cropData = null;
+      if (cropper) {
+        try {
+          cropData = cropper.getData(true);
+        } catch(err) {}
+      }
+
+      try {
+        curationState[currentItem.id] = {
+          id: currentItem.id,
+          filename: currentItem.filename,
+          raw_path: currentItem.raw,
+          category: category,
+          label: label || currentItem.default_label,
+          cropData: cropData,
+          timestamp: new Date().toISOString()
+        };
+        localStorage.setItem('torre_edmon_curation', JSON.stringify(curationState));
+      } catch (e) {}
+
+      const savedId = currentItem.id;
+      closeEditor();
+      renderGrid();
+      showToast(`¡ID #${savedId} guardado en el registro!`);
+    }
+
+    function exportData() {
+      const dataStr = JSON.stringify(curationState, null, 2);
+      const blob = new Blob([dataStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'assets_curados_edmon.json';
+      a.click();
+    }
+
+    function finishAndReprocess() {
+      exportData();
+      alert('¡Registro guardado y descargado! Notifícame en el chat para aplicar los recortes.');
+    }
+
+    window.addEventListener('DOMContentLoaded', renderGrid);
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeEditor();
+    });
+  </script>
+</body>
+</html>

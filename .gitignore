@@ -1,0 +1,12 @@
+﻿# Environment / OS
+.DS_Store
+Thumbs.db
+
+# Temporary Media & Large PDF
+# *.pdf
+assets/slides_hires/
+assets/raw_extracted/
+
+# Python
+__pycache__/
+*.pyc

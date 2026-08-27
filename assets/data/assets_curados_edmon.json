@@ -1,0 +1,390 @@
+{
+  "10": {
+    "id": "10",
+    "filename": "img_10_p10_2420x1361.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_10_p10_2420x1361.jpeg",
+    "category": "exterior",
+    "label": "Render #10",
+    "cropData": {
+      "x": 61,
+      "y": 34,
+      "width": 2298,
+      "height": 1293
+    }
+  },
+  "11": {
+    "id": "11",
+    "filename": "img_11_p11_2666x1499.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_11_p11_2666x1499.jpeg",
+    "category": "descartar",
+    "label": "Render #11",
+    "cropData": {
+      "x": 67,
+      "y": 37,
+      "width": 2532,
+      "height": 1425
+    }
+  },
+  "12": {
+    "id": "12",
+    "filename": "img_12_p12_2420x1361.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_12_p12_2420x1361.jpeg",
+    "category": "amenities",
+    "label": "Hall acceso",
+    "cropData": {
+      "x": 61,
+      "y": 34,
+      "width": 2298,
+      "height": 1293
+    }
+  },
+  "13": {
+    "id": "13",
+    "filename": "img_13_p13_2420x1361.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_13_p13_2420x1361.jpeg",
+    "category": "exterior",
+    "label": "Render #13",
+    "cropData": {
+      "x": 61,
+      "y": 34,
+      "width": 2298,
+      "height": 1293
+    }
+  },
+  "14": {
+    "id": "14",
+    "filename": "img_14_p14_2420x1361.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_14_p14_2420x1361.jpeg",
+    "category": "amenities",
+    "label": "RendeHall acceso",
+    "cropData": {
+      "x": 61,
+      "y": 34,
+      "width": 2298,
+      "height": 1293
+    }
+  },
+  "15": {
+    "id": "15",
+    "filename": "img_15_p15_2420x1361.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_15_p15_2420x1361.jpeg",
+    "category": "exterior",
+    "label": "Render #15",
+    "cropData": {
+      "x": 61,
+      "y": 34,
+      "width": 2298,
+      "height": 1293
+    }
+  },
+  "16": {
+    "id": "16",
+    "filename": "img_16_p16_2420x1361.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_16_p16_2420x1361.jpeg",
+    "category": "exterior",
+    "label": "Render #16",
+    "cropData": {
+      "x": 61,
+      "y": 34,
+      "width": 2298,
+      "height": 1293
+    }
+  },
+  "17": {
+    "id": "17",
+    "filename": "img_17_p17_2420x1361.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_17_p17_2420x1361.jpeg",
+    "category": "exterior",
+    "label": "Hall acceso",
+    "cropData": {
+      "x": 61,
+      "y": 34,
+      "width": 2298,
+      "height": 1293
+    }
+  },
+  "18": {
+    "id": "18",
+    "filename": "img_18_p18_2420x1361.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_18_p18_2420x1361.jpeg",
+    "category": "exterior",
+    "label": "Render #18",
+    "cropData": {
+      "x": 61,
+      "y": 34,
+      "width": 2298,
+      "height": 1293
+    }
+  },
+  "19": {
+    "id": "19",
+    "filename": "img_19_p19_2420x1361.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_19_p19_2420x1361.jpeg",
+    "category": "exterior",
+    "label": "Hall acceso nocturno",
+    "cropData": {
+      "x": 61,
+      "y": 34,
+      "width": 2298,
+      "height": 1293
+    }
+  },
+  "20": {
+    "id": "20",
+    "category": "descartar"
+  },
+  "21": {
+    "id": "21",
+    "category": "descartar"
+  },
+  "22": {
+    "id": "22",
+    "category": "descartar"
+  },
+  "23": {
+    "id": "23",
+    "category": "descartar"
+  },
+  "24": {
+    "id": "24",
+    "filename": "img_26_p24_2666x1499.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_26_p24_2666x1499.jpeg",
+    "category": "interiores",
+    "label": "Cocina",
+    "cropData": {
+      "x": 67,
+      "y": 37,
+      "width": 2532,
+      "height": 1425
+    }
+  },
+  "25": {
+    "id": "25",
+    "category": "descartar"
+  },
+  "26": {
+    "id": "26",
+    "filename": "img_28_p26_2420x1361.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_28_p26_2420x1361.jpeg",
+    "category": "interiores",
+    "label": "Living",
+    "cropData": {
+      "x": 61,
+      "y": 34,
+      "width": 2298,
+      "height": 1293
+    }
+  },
+  "27": {
+    "id": "27",
+    "filename": "img_29_p27_2420x1361.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_29_p27_2420x1361.jpeg",
+    "category": "interiores",
+    "label": "Balcon",
+    "cropData": {
+      "x": 61,
+      "y": 34,
+      "width": 2298,
+      "height": 1293
+    }
+  },
+  "28": {
+    "id": "28",
+    "filename": "img_30_p28_2420x1361.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_30_p28_2420x1361.jpeg",
+    "category": "interiores",
+    "label": "Master bedroom",
+    "cropData": {
+      "x": 61,
+      "y": 34,
+      "width": 2298,
+      "height": 1293
+    }
+  },
+  "29": {
+    "id": "29",
+    "category": "descartar"
+  },
+  "30": {
+    "id": "30",
+    "filename": "img_32_p30_2666x1499.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_32_p30_2666x1499.jpeg",
+    "category": "amenities",
+    "label": "Solarium en terraza",
+    "cropData": {
+      "x": 67,
+      "y": 37,
+      "width": 2268,
+      "height": 1425
+    }
+  },
+  "31": {
+    "id": "31",
+    "filename": "img_33_p31_2666x1499.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_33_p31_2666x1499.jpeg",
+    "category": "amenities",
+    "label": "Piscina en terraza",
+    "cropData": {
+      "x": 67,
+      "y": 37,
+      "width": 2532,
+      "height": 1425
+    }
+  },
+  "32": {
+    "id": "32",
+    "filename": "img_34_p32_2666x1499.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_34_p32_2666x1499.jpeg",
+    "category": "amenities",
+    "label": "Gym",
+    "cropData": {
+      "x": 67,
+      "y": 37,
+      "width": 2532,
+      "height": 1425
+    }
+  },
+  "33": {
+    "id": "33",
+    "filename": "img_35_p33_2666x1499.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_35_p33_2666x1499.jpeg",
+    "category": "branding",
+    "label": "logo inmobiliaria rio parana",
+    "cropData": {
+      "x": 770,
+      "y": 255,
+      "width": 1172,
+      "height": 984
+    }
+  },
+  "34": {
+    "id": "34",
+    "filename": "plantas render.png",
+    "raw_path": "assets/plantas render.png",
+    "category": "plantas",
+    "label": "distribucion",
+    "cropData": {
+      "x": 42,
+      "y": 24,
+      "width": 1588,
+      "height": 893
+    }
+  },
+  "35": {
+    "id": "35",
+    "filename": "mapa_ubicacion_masterplan.webp",
+    "raw_path": "assets/mapa_ubicacion_masterplan.webp",
+    "category": "exterior",
+    "label": "Ubicacion del proyecto",
+    "cropData": {
+      "x": 26,
+      "y": 13,
+      "width": 972,
+      "height": 497
+    }
+  },
+  "02": {
+    "id": "02",
+    "filename": "img_02_p02_2420x1361.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_02_p02_2420x1361.jpeg",
+    "category": "exterior",
+    "label": "Fachada principal",
+    "cropData": {
+      "x": 61,
+      "y": 34,
+      "width": 1580,
+      "height": 1293
+    }
+  },
+  "03": {
+    "id": "03",
+    "filename": "img_03_p03_2666x1499.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_03_p03_2666x1499.jpeg",
+    "category": "exterior",
+    "label": "Ubicacion del edificio",
+    "cropData": {
+      "x": 67,
+      "y": 37,
+      "width": 1967,
+      "height": 1313
+    }
+  },
+  "05": {
+    "id": "05",
+    "filename": "img_05_p05_2420x1361.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_05_p05_2420x1361.jpeg",
+    "category": "exterior",
+    "label": "Entorno costero",
+    "cropData": {
+      "x": 729,
+      "y": 34,
+      "width": 1681,
+      "height": 1293
+    }
+  },
+  "06": {
+    "id": "06",
+    "filename": "img_06_p06_2666x1499.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_06_p06_2666x1499.jpeg",
+    "category": "exterior",
+    "label": "Vista diurna",
+    "cropData": {
+      "x": 67,
+      "y": 37,
+      "width": 2532,
+      "height": 1425
+    }
+  },
+  "07": {
+    "id": "07",
+    "filename": "img_07_p07_2420x1361.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_07_p07_2420x1361.jpeg",
+    "category": "exterior",
+    "label": "Fachada y calle",
+    "cropData": {
+      "x": 531,
+      "y": 34,
+      "width": 1829,
+      "height": 1293
+    }
+  },
+  "08": {
+    "id": "08",
+    "filename": "img_08_p08_2420x1361.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_08_p08_2420x1361.jpeg",
+    "category": "exterior",
+    "label": "Balcones al rio",
+    "cropData": {
+      "x": 61,
+      "y": 34,
+      "width": 1916,
+      "height": 1293
+    }
+  },
+  "09": {
+    "id": "09",
+    "filename": "img_09_p09_2420x1361.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_09_p09_2420x1361.jpeg",
+    "category": "exterior",
+    "label": "Detalles arquitectura",
+    "cropData": {
+      "x": 61,
+      "y": 34,
+      "width": 1878,
+      "height": 1293
+    }
+  },
+  "01": {
+    "id": "01",
+    "filename": "img_01_p01_2666x1499.jpeg",
+    "raw_path": "assets/raw_pure_extracted/img_01_p01_2666x1499.jpeg",
+    "category": "branding",
+    "label": "Logo del edificio",
+    "cropData": {
+      "x": 67,
+      "y": 37,
+      "width": 2532,
+      "height": 1425
+    }
+  }
+}

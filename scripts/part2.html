@@ -1,0 +1,183 @@
+
+  <!-- El Proyecto -->
+  <section id="proyecto" class="section-project">
+    <div class="container">
+      <div class="section-tag">Arquitectura & Exclusividad</div>
+      <h2 class="section-title">Vivir con la <span class="text-gold">Jerarquía del Río</span></h2>
+      <p class="section-subtitle">
+        Torre Edmon ha sido proyectada para aquellos que buscan un estilo de vida superior: semipisos de excelencia constructiva, vistas ininterrumpidas y comodidades pensadas al detalle.
+      </p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-water"></i></div>
+          <h3>Todos los Balcones al Río</h3>
+          <p>Orientación frontal absoluta: cada unidad disfruta de un balcón terraza con parrilla propia y vista abierta al Río Paraná.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-charging-station"></i></div>
+          <h3>Cocheras con Cargadores Eléctricos</h3>
+          <p>Estacionamiento cubierto con portón automático e infraestructura prevista para la recarga de vehículos eléctricos (EV Ready).</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-building"></i></div>
+          <h3>Semipisos Homogéneos</h3>
+          <p>Planta tipo de máxima categoría: todas las unidades comparten la misma jerarquía de diseño, ventilación cruzada y terminaciones de lujo.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>Seguridad & Hall en Doble Altura</h3>
+          <p>Control de acceso inteligente 24hs, recepción jerarquizada y revestimientos nobles en mármol y porcelanato.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Blueprint & Distribution Viewer with Zoom & Pan -->
+  <section id="plantas" class="section-plans">
+    <div class="container">
+      <div class="section-tag">Distribución Arquitectónica Oficial</div>
+      <h2 class="section-title">Visor Interactivo de <span class="text-gold">Plantas & Distribución</span></h2>
+      <p class="section-subtitle">
+        Explorá el dibujo completo de la distribución interna del departamento tipo extraído del folleto. Podés <strong>hacer zoom con los botones o la rueda del mouse y arrastrar</strong> para examinar cada detalle y cota arquitectónica.
+      </p>
+
+      <div class="blueprint-master-card">
+        <div id="plan-interactive-viewport" class="blueprint-viewport-wrapper">
+          <div id="plan-canvas-container" class="blueprint-canvas-container">
+            <img id="plan-zoom-img" src="assets/web_optimized/slide_24.webp" alt="Distribución Interna Completa - Departamento Tipo">
+            <div id="plan-hotspots-container" class="plan-hotspots">
+              <div class="hotspot-pin" style="top: 25%; left: 30%;">
+                <i class="fas fa-water"></i>
+                <div class="hotspot-tooltip">
+                  <strong>Balcón Terraza al Río Paraná</strong><br>
+                  Parrilla individual integrada y vista frontal abierta al río.
+                </div>
+              </div>
+              <div class="hotspot-pin" style="top: 45%; left: 45%;">
+                <i class="fas fa-couch"></i>
+                <div class="hotspot-tooltip">
+                  <strong>Living Comedor Apaisado</strong><br>
+                  Grandes ventanales de piso a techo con DVH y ventilación cruzada.
+                </div>
+              </div>
+              <div class="hotspot-pin" style="top: 35%; left: 75%;">
+                <i class="fas fa-bed"></i>
+                <div class="hotspot-tooltip">
+                  <strong>Master Suite de Lujo</strong><br>
+                  Dormitorio principal con vestidor exclusivo y baño en suite.
+                </div>
+              </div>
+              <div class="hotspot-pin" style="top: 68%; left: 40%;">
+                <i class="fas fa-utensils"></i>
+                <div class="hotspot-tooltip">
+                  <strong>Cocina de Concepto Abierto</strong><br>
+                  Mobiliario a medida, mesadas de granito/cuarzo y barra desayunadora.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="plan-controls-bar">
+            <button id="btn-zoom-out" class="plan-ctrl-btn" title="Alejar (-)"><i class="fas fa-minus"></i></button>
+            <span id="zoom-level-badge" class="zoom-level-indicator">100%</span>
+            <button id="btn-zoom-in" class="plan-ctrl-btn" title="Acercar (+)"><i class="fas fa-plus"></i></button>
+            <button id="btn-zoom-reset" class="plan-ctrl-btn" title="Restablecer vista (100%)"><i class="fas fa-undo"></i></button>
+            <button id="btn-zoom-fullscreen" class="plan-ctrl-btn" title="Ver en pantalla completa"><i class="fas fa-expand"></i></button>
+          </div>
+        </div>
+
+        <div class="blueprint-sidebar">
+          <div class="plan-nav-tabs">
+            <button class="plan-nav-tab active" data-plan="planta-depto">Distribución Interna (Depto Tipo)</button>
+            <button class="plan-nav-tab" data-plan="planta-tipo">Planta Nivel Semipisos</button>
+            <button class="plan-nav-tab" data-plan="planta-azotea">Planta Azotea & Amenities</button>
+            <button class="plan-nav-tab" data-plan="planta-cocheras">Planta Cocheras (EV Ready)</button>
+          </div>
+
+          <div class="plan-view-header">
+            <span id="plan-view-badge" class="plan-badge-pill">Unidades Idénticas con Vista al Río Paraná</span>
+            <h3 id="plan-view-title" style="margin-top: 0.5rem;">Distribución Interna Completa - Departamento Tipo</h3>
+          </div>
+
+          <p id="plan-view-desc" class="text-muted" style="font-size: 0.95rem; line-height: 1.6;">
+            Semipiso residencial diseñado con la máxima eficiencia espacial: living comedor apaisado con ventanales de piso a techo, balcón terraza con parrilla propia mirando al Río Paraná, master suite con vestidor, segundo dormitorio y cocina integrada de vanguardia.
+          </p>
+
+          <ul class="plan-view-features">
+            <li><i class="fas fa-check-circle"></i> Balcón terraza de gran dimensión con parrilla individual y vista frontal al Río Paraná.</li>
+            <li><i class="fas fa-check-circle"></i> Living comedor apaisado con ventanales herméticos DVH de piso a techo.</li>
+            <li><i class="fas fa-check-circle"></i> Master Suite privada con vestidor y baño en suite.</li>
+            <li><i class="fas fa-check-circle"></i> Cocina moderna con mesada en granito/cuarzo y barra integrada.</li>
+            <li><i class="fas fa-check-circle"></i> Doble ventilación cruzada y terminaciones en porcelanato rectificado.</li>
+          </ul>
+
+          <div style="margin-top: 2rem;">
+            <a href="#contacto" class="btn-primary" style="width: 100%; justify-content: center;">
+              <i class="fab fa-whatsapp"></i> Consultar Disponibilidad de Semipisos
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Amenities & Espacios Comunes -->
+  <section id="amenities" class="section-amenities">
+    <div class="container">
+      <div class="section-tag">Espacios Sociales & Relax</div>
+      <h2 class="section-title">Amenities en la <span class="text-gold">Cúspide de la Torre</span></h2>
+      <p class="section-subtitle">
+        Fotos reales y renders oficiales de los espacios comunes: piscina infinity en la azotea, solárium, quincho gourmet y hall en doble altura.
+      </p>
+
+      <div class="amenities-grid">
+        <div class="amenity-card" data-lightbox data-hires="assets/web_optimized/slide_07.webp" data-caption="Piscina Infinity en Azotea con Vista al Río Paraná">
+          <img src="assets/web_optimized/slide_07.webp" alt="Piscina Infinity en Azotea" class="amenity-img" loading="lazy">
+          <div class="amenity-overlay">
+            <h3>Piscina Infinity en Azotea</h3>
+            <p>Piscina panorámica con solárium atérmico y visuales ininterrumpidas hacia el horizonte del Río Paraná.</p>
+          </div>
+        </div>
+
+        <div class="amenity-card" data-lightbox data-hires="assets/web_optimized/slide_08.webp" data-caption="Deck Solárium y Área de Relax en Azotea">
+          <img src="assets/web_optimized/slide_08.webp" alt="Deck Solárium" class="amenity-img" loading="lazy">
+          <div class="amenity-overlay">
+            <h3>Deck Solárium & Relax</h3>
+            <p>Área exterior de descanso con reposeras de madera noble para contemplar los mejores atardeceres.</p>
+          </div>
+        </div>
+
+        <div class="amenity-card" data-lightbox data-hires="assets/web_optimized/slide_09.webp" data-caption="SUM & Quincho Totalmente Equipado con Gran Parrilla">
+          <img src="assets/web_optimized/slide_09.webp" alt="SUM y Quincho" class="amenity-img" loading="lazy">
+          <div class="amenity-overlay">
+            <h3>SUM & Quincho Climatizado</h3>
+            <p>Salón de usos múltiples de gran capacidad con parrilla completa, cocina y amoblamiento para reuniones sociales.</p>
+          </div>
+        </div>
+
+        <div class="amenity-card" data-lightbox data-hires="assets/web_optimized/slide_10.webp" data-caption="Espacio Gourmet Integrado y Living de Azotea">
+          <img src="assets/web_optimized/slide_10.webp" alt="Espacio Gourmet" class="amenity-img" loading="lazy">
+          <div class="amenity-overlay">
+            <h3>Espacio Gourmet & Living</h3>
+            <p>Ambiente lounge de diseño contemporáneo para compartir encuentros familiares en un entorno sofisticado.</p>
+          </div>
+        </div>
+
+        <div class="amenity-card" data-lightbox data-hires="assets/web_optimized/slide_05.webp" data-caption="Lobby y Hall de Acceso Principal en Doble Altura">
+          <img src="assets/web_optimized/slide_05.webp" alt="Hall de Acceso" class="amenity-img" loading="lazy">
+          <div class="amenity-overlay">
+            <h3>Hall de Acceso en Doble Altura</h3>
+            <p>Ingreso jerarquizado con revestimientos en mármol, porcelanato, iluminación escenográfica y portería.</p>
+          </div>
+        </div>
+
+        <div class="amenity-card" data-lightbox data-hires="assets/web_optimized/slide_06.webp" data-caption="Recepción y Sala de Espera Principal">
+          <img src="assets/web_optimized/slide_06.webp" alt="Recepción Principal" class="amenity-img" loading="lazy">
+          <div class="amenity-overlay">
+            <h3>Recepción & Sala de Espera</h3>
+            <p>Salón de bienvenida distinguido y confortable para residentes y visitas con control de acceso.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
