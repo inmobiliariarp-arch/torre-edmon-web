@@ -55,9 +55,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. SMOOTH IN-PLACE ZOOM & PAN FOR FLOOR PLAN (PC Mouse + Mobile Touch Pinch)
+  // 3. ARCHITECTURAL PANZOOM STUDIO (STRICT BOUNDARY CLAMPING & FOCAL POINT)
   const planBox = document.getElementById('plan-interactive-box');
   const planImg = document.getElementById('plan-zoom-img');
+  const zoomValDisplay = document.getElementById('plan-zoom-val');
+  const zoomInBtn = document.getElementById('plan-zoom-in');
+  const zoomOutBtn = document.getElementById('plan-zoom-out');
+  const zoomResetBtn = document.getElementById('plan-zoom-reset');
 
   if (planBox && planImg) {
     let scale = 1;
@@ -66,37 +70,90 @@ document.addEventListener('DOMContentLoaded', () => {
     let isDragging = false;
     let startX = 0;
     let startY = 0;
+    const MIN_SCALE = 1;
+    const MAX_SCALE = 4.5;
 
-    // Mobile Pinch-to-Zoom variables
-    let initialDistance = 0;
-    let initialScale = 1;
+    // Strict boundary clamping so plan edges never detach or reveal blank/black borders
+    function clampPan(targetX, targetY, targetScale) {
+      if (targetScale <= 1) return { x: 0, y: 0 };
 
-    function applyTransform() {
-      scale = Math.min(Math.max(1, scale), 4);
+      const boxRect = planBox.getBoundingClientRect();
+      const imgNaturalRatio = (planImg.naturalWidth && planImg.naturalHeight) 
+        ? (planImg.naturalWidth / planImg.naturalHeight) 
+        : (boxRect.width / boxRect.height);
+
+      let baseW = boxRect.width * 0.92;
+      let baseH = baseW / imgNaturalRatio;
+      if (baseH > boxRect.height * 0.92) {
+        baseH = boxRect.height * 0.92;
+        baseW = baseH * imgNaturalRatio;
+      }
+
+      const scaledW = baseW * targetScale;
+      const scaledH = baseH * targetScale;
+
+      const maxPanX = Math.max(0, (scaledW - boxRect.width) / 2);
+      const maxPanY = Math.max(0, (scaledH - boxRect.height) / 2);
+
+      const clampedX = Math.max(-maxPanX, Math.min(maxPanX, targetX));
+      const clampedY = Math.max(-maxPanY, Math.min(maxPanY, targetY));
+
+      return { x: clampedX, y: clampedY };
+    }
+
+    function updateTransform(animate = false) {
+      scale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, scale));
       if (scale === 1) {
         panX = 0;
         panY = 0;
+      } else {
+        const clamped = clampPan(panX, panY, scale);
+        panX = clamped.x;
+        panY = clamped.y;
       }
-      planImg.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
+
+      planImg.style.transition = animate ? 'transform 0.28s cubic-bezier(0.2, 0, 0.2, 1)' : 'none';
+      planImg.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${scale})`;
       planBox.style.cursor = scale > 1 ? (isDragging ? 'grabbing' : 'grab') : 'zoom-in';
+
+      if (zoomValDisplay) {
+        zoomValDisplay.textContent = `${Math.round(scale * 100)}%`;
+      }
     }
 
-    // Mouse wheel zoom
+    function zoomToPoint(deltaFactor, focalX, focalY) {
+      const boxRect = planBox.getBoundingClientRect();
+      const centerX = (focalX !== undefined) ? (focalX - boxRect.left - boxRect.width / 2) : 0;
+      const centerY = (focalY !== undefined) ? (focalY - boxRect.top - boxRect.height / 2) : 0;
+
+      const prevScale = scale;
+      const newScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, scale * deltaFactor));
+
+      if (newScale !== prevScale) {
+        const scaleRatio = newScale / prevScale;
+        panX = centerX - (centerX - panX) * scaleRatio;
+        panY = centerY - (centerY - panY) * scaleRatio;
+        scale = newScale;
+        updateTransform(true);
+      }
+    }
+
+    // Wheel event with focal zoom
     planBox.addEventListener('wheel', (e) => {
       e.preventDefault();
-      const delta = e.deltaY * -0.002;
-      scale += delta;
-      applyTransform();
+      const delta = e.deltaY < 0 ? 1.18 : 0.82;
+      zoomToPoint(delta, e.clientX, e.clientY);
     }, { passive: false });
 
-    // Mouse Drag to Pan (when zoomed)
+    // Drag to Pan with mouse
     planBox.addEventListener('mousedown', (e) => {
-      if (e.target.closest('.plan-zoom-badge-btn')) return;
+      if (e.target.closest('.plan-toolbar')) return;
       if (scale > 1) {
         isDragging = true;
         startX = e.clientX - panX;
         startY = e.clientY - panY;
-        applyTransform();
+        planImg.style.transition = 'none';
+        planBox.style.cursor = 'grabbing';
       }
     });
 
@@ -104,47 +161,56 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!isDragging) return;
       panX = e.clientX - startX;
       panY = e.clientY - startY;
-      applyTransform();
+      updateTransform(false);
     });
 
     window.addEventListener('mouseup', () => {
       if (isDragging) {
         isDragging = false;
-        applyTransform();
+        updateTransform(true);
       }
     });
 
-    // Touch events for Mobile (Pinch-to-zoom & 1-finger pan)
+    // Touch events for Mobile (Pinch-to-zoom & 1-finger drag)
+    let initialPinchDist = 0;
+    let initialPinchScale = 1;
+    let pinchCenter = { x: 0, y: 0 };
+
     planBox.addEventListener('touchstart', (e) => {
+      if (e.target.closest('.plan-toolbar')) return;
       if (e.touches.length === 2) {
-        initialDistance = getDistance(e.touches[0], e.touches[1]);
-        initialScale = scale;
+        initialPinchDist = getDistance(e.touches[0], e.touches[1]);
+        initialPinchScale = scale;
+        pinchCenter = {
+          x: (e.touches[0].clientX + e.touches[1].clientX) / 2,
+          y: (e.touches[0].clientY + e.touches[1].clientY) / 2
+        };
       } else if (e.touches.length === 1 && scale > 1) {
         isDragging = true;
         startX = e.touches[0].clientX - panX;
         startY = e.touches[0].clientY - panY;
+        planImg.style.transition = 'none';
       }
     }, { passive: true });
 
     planBox.addEventListener('touchmove', (e) => {
-      if (e.touches.length === 2 && initialDistance > 0) {
+      if (e.touches.length === 2 && initialPinchDist > 0) {
         const currentDist = getDistance(e.touches[0], e.touches[1]);
-        const factor = currentDist / initialDistance;
-        scale = initialScale * factor;
-        applyTransform();
+        const factor = currentDist / initialPinchDist;
+        const newScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, initialPinchScale * factor));
+        zoomToPoint(newScale / scale, pinchCenter.x, pinchCenter.y);
       } else if (e.touches.length === 1 && isDragging) {
         panX = e.touches[0].clientX - startX;
         panY = e.touches[0].clientY - startY;
-        applyTransform();
+        updateTransform(false);
       }
     }, { passive: true });
 
     planBox.addEventListener('touchend', (e) => {
-      if (e.touches.length < 2) {
-        initialDistance = 0;
-      }
+      if (e.touches.length < 2) initialPinchDist = 0;
       if (e.touches.length === 0) {
         isDragging = false;
+        updateTransform(true);
       }
     });
 
@@ -154,21 +220,46 @@ document.addEventListener('DOMContentLoaded', () => {
       return Math.sqrt(dx * dx + dy * dy);
     }
 
-    // Double-click/double-tap to reset or toggle zoom
-    let lastTap = 0;
+    // Double-click/double-tap to toggle 1x and 2.2x
+    let lastClick = 0;
     planBox.addEventListener('click', (e) => {
-      if (e.target.closest('.plan-zoom-badge-btn')) return;
-      const now = new Date().getTime();
-      const timesince = now - lastTap;
-      if (timesince < 300 && timesince > 0) {
-        // Double tap: toggle 2x or 1x
-        scale = scale > 1 ? 1 : 2.2;
+      if (e.target.closest('.plan-toolbar') || e.target.closest('.plan-footer-bar')) return;
+      const now = Date.now();
+      if (now - lastClick < 320) {
+        if (scale > 1.1) {
+          scale = 1;
+          panX = 0;
+          panY = 0;
+          updateTransform(true);
+        } else {
+          zoomToPoint(2.3, e.clientX, e.clientY);
+        }
+      }
+      lastClick = now;
+    });
+
+    // Toolbar button listeners
+    if (zoomInBtn) {
+      zoomInBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        zoomToPoint(1.35);
+      });
+    }
+    if (zoomOutBtn) {
+      zoomOutBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        zoomToPoint(0.75);
+      });
+    }
+    if (zoomResetBtn) {
+      zoomResetBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        scale = 1;
         panX = 0;
         panY = 0;
-        applyTransform();
-      }
-      lastTap = new Date().getTime();
-    });
+        updateTransform(true);
+      });
+    }
   }
 
   // 4. LIGHTBOX MODAL

@@ -172,11 +172,33 @@
       </div>
 
       <div class="plan-container-card">
-        <div id="plan-interactive-box" class="plan-interactive-wrapper">
-          <button class="plan-zoom-badge-btn" data-lightbox data-hires="assets/curated/plantas/plantas_34.webp" data-caption="Planta Tipo - Distribución Oficial">
-            <i class="fas fa-search-plus"></i> Zoom
+        <!-- Floating Glassmorphic Control Toolbar -->
+        <div class="plan-toolbar" role="toolbar" aria-label="Controles de visualización del plano">
+          <span class="plan-zoom-indicator" id="plan-zoom-val" title="Nivel de zoom">100%</span>
+          <div class="plan-toolbar-divider"></div>
+          <button class="plan-tool-btn" id="plan-zoom-in" title="Acercar (+)" aria-label="Acercar zoom">
+            <i class="fas fa-plus"></i>
           </button>
-          <img id="plan-zoom-img" src="assets/curated/plantas/plantas_34.webp" alt="Planta Tipo Torre Edmon">
+          <button class="plan-tool-btn" id="plan-zoom-out" title="Alejar (-)" aria-label="Alejar zoom">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button class="plan-tool-btn" id="plan-zoom-reset" title="Restablecer vista" aria-label="Restablecer vista">
+            <i class="fas fa-redo-alt"></i>
+          </button>
+          <div class="plan-toolbar-divider"></div>
+          <button class="plan-tool-btn highlight" id="plan-zoom-expand" data-lightbox data-hires="assets/curated/plantas/plantas_34.webp" data-caption="Planta Tipo - Distribución Oficial en Alta Definición" title="Pantalla Completa" aria-label="Pantalla completa">
+            <i class="fas fa-expand"></i>
+          </button>
+        </div>
+
+        <!-- Interactive Blueprint Viewport -->
+        <div id="plan-interactive-box" class="plan-interactive-wrapper">
+          <img id="plan-zoom-img" src="assets/curated/plantas/plantas_34.webp" alt="Planta Tipo Torre Edmon" draggable="false">
+        </div>
+
+        <!-- Footnote / Hint Bar -->
+        <div class="plan-footer-bar">
+          <span class="plan-hint-text"><i class="fas fa-mouse"></i> Usa la rueda del ratón o arrastra para explorar • Doble clic para zoom rápido</span>
         </div>
       </div>
     </div>
