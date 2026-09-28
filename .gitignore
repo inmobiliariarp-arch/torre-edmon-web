@@ -10,3 +10,4 @@ assets/raw_extracted/
 # Python
 __pycache__/
 *.pyc
+.vercel

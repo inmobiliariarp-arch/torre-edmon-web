@@ -1,48 +1,21 @@
-﻿/* ==========================================================================
-   TORRE EDMON - LUXURY ARCHITECTURE APPLICATION ENGINE
-   Smooth Mouse & Touch Pinch-to-Zoom Controller
+/* ==========================================================================
+   TORRE EDMON — ARCHITECTURAL APPLICATION ENGINE
+   Smooth Panzoom Controller • Lightbox Modal • Dark Luxury Architecture
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. THEME TOGGLE (Dark / Light)
-  const themeToggleBtn = document.getElementById('theme-toggle');
-  const themeIcon = document.getElementById('theme-icon');
-  const htmlRoot = document.documentElement;
-
-  const savedTheme = localStorage.getItem('torre_edmon_theme') || 'dark';
-  applyTheme(savedTheme);
-
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
-      const current = htmlRoot.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      applyTheme(next);
-      localStorage.setItem('torre_edmon_theme', next);
-    });
-  }
-
-  function applyTheme(theme) {
-    htmlRoot.setAttribute('data-theme', theme);
-    if (themeIcon) {
-      if (theme === 'light') {
-        themeIcon.className = 'fas fa-moon';
-        themeToggleBtn.setAttribute('title', 'Modo Oscuro');
-      } else {
-        themeIcon.className = 'fas fa-sun';
-        themeToggleBtn.setAttribute('title', 'Modo Claro');
-      }
-    }
-  }
+  // 1. DEFAULT DARK LUXURY ENFORCEMENT
+  document.documentElement.setAttribute('data-theme', 'dark');
 
   // 2. NAVBAR SCROLL & MOBILE MENU
   const navbar = document.querySelector('.navbar');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 40) {
-      navbar.classList.add('scrolled');
+      navbar?.classList.add('scrolled');
     } else {
-      navbar.classList.remove('scrolled');
+      navbar?.classList.remove('scrolled');
     }
-  });
+  }, { passive: true });
 
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const navLinks = document.querySelector('.nav-links');
@@ -171,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Touch events for Mobile (Pinch-to-zoom & 1-finger drag)
+    // Touch events for Mobile
     let initialPinchDist = 0;
     let initialPinchScale = 1;
     let pinchCenter = { x: 0, y: 0 };
@@ -220,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return Math.sqrt(dx * dx + dy * dy);
     }
 
-    // Double-click/double-tap to toggle 1x and 2.2x
+    // Double-click/double-tap to toggle 1x and 2.3x
     let lastClick = 0;
     planBox.addEventListener('click', (e) => {
       if (e.target.closest('.plan-toolbar') || e.target.closest('.plan-footer-bar')) return;
@@ -239,27 +212,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Toolbar button listeners
-    if (zoomInBtn) {
-      zoomInBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        zoomToPoint(1.35);
-      });
-    }
-    if (zoomOutBtn) {
-      zoomOutBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        zoomToPoint(0.75);
-      });
-    }
-    if (zoomResetBtn) {
-      zoomResetBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        scale = 1;
-        panX = 0;
-        panY = 0;
-        updateTransform(true);
-      });
-    }
+    zoomInBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      zoomToPoint(1.35);
+    });
+
+    zoomOutBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      zoomToPoint(0.75);
+    });
+
+    zoomResetBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      scale = 1;
+      panX = 0;
+      panY = 0;
+      updateTransform(true);
+    });
   }
 
   // 4. LIGHTBOX MODAL
@@ -289,12 +258,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-  if (lightbox) {
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
-  }
+  lightboxClose?.addEventListener('click', closeLightbox);
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeLightbox();
   });
