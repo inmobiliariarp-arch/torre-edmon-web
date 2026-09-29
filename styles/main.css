@@ -911,9 +911,15 @@ h1, h2, h3, h4 {
 }
 
 .plan-hint-text {
+  font-family: var(--font-serif);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-light);
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
 }
 
 /* Plan Spec Summary Card */
