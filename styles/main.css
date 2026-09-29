@@ -14,7 +14,7 @@
   --bg-main: #08090c;
   --bg-surface: #0e1015;
   --bg-surface-elevated: #141720;
-  --bg-glass: rgba(14, 16, 21, 0.82);
+  --bg-glass: rgba(14, 16, 21, 0.85);
   --bg-glass-card: rgba(18, 22, 29, 0.65);
   
   --border-glass: rgba(255, 255, 255, 0.08);
@@ -72,7 +72,7 @@ body.dark-editorial {
   height: 100vh;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.35;
+  opacity: 0.25;
 }
 
 .container {
@@ -312,15 +312,15 @@ h1, h2, h3, h4 {
 }
 
 /* ==========================================================================
-   HERO SECTION
+   HERO SECTION (Full Vibrant Video, Clean Unobstructed Animation)
    ========================================================================== */
 .hero {
   position: relative;
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8rem 0 6rem;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 8rem 0 3.5rem;
   overflow: hidden;
 }
 
@@ -337,110 +337,45 @@ h1, h2, h3, h4 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.72) contrast(1.08);
+  filter: brightness(1.05) contrast(1.02);
 }
 
+/* Subtle, transparent bottom blend so the video animation is completely clear */
 .hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, rgba(8, 9, 12, 0.25) 0%, rgba(8, 9, 12, 0.85) 75%, var(--bg-main) 100%),
-              linear-gradient(to bottom, rgba(8, 9, 12, 0.4) 0%, rgba(8, 9, 12, 0.8) 85%, var(--bg-main) 100%);
+  background: linear-gradient(to bottom, rgba(8, 9, 12, 0.05) 0%, rgba(8, 9, 12, 0.15) 65%, var(--bg-main) 100%);
   z-index: 1;
 }
 
-.hero-content {
+.hero-content-minimal {
   position: relative;
   z-index: 2;
-  text-align: center;
-  max-width: 980px;
+  width: 100%;
+  max-width: 1100px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.hero-tagline-wrap {
-  display: inline-flex;
-  align-items: center;
-  gap: 1.25rem;
-  margin-bottom: 1.75rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.hero-badge {
-  background: rgba(197, 160, 89, 0.12);
-  border: 1px solid var(--border-gold);
-  color: var(--gold-light);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.25em;
-  padding: 0.4rem 1.1rem;
-  border-radius: var(--radius-full);
-  text-transform: uppercase;
-}
-
-.hero-meta-loc {
-  color: var(--text-muted);
-  font-size: 0.82rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.hero-meta-loc i {
-  color: var(--gold-primary);
-}
-
-.hero-title {
-  font-size: clamp(3.2rem, 7.8vw, 6.2rem);
-  line-height: 1;
-  letter-spacing: 0.12em;
-  font-weight: 700;
-  margin-bottom: 1.2rem;
-  text-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
-}
-
-.hero-subtitle-editorial {
-  display: block;
-  font-family: var(--font-accent);
-  font-style: italic;
-  font-size: clamp(1.4rem, 3.2vw, 2.3rem);
-  color: var(--gold-light);
-  letter-spacing: 0.02em;
-  font-weight: 400;
-  margin-top: 0.6rem;
-  text-transform: none;
-}
-
-.hero-summary-statement {
-  font-size: clamp(1rem, 1.8vw, 1.2rem);
-  color: #d1d5db;
-  max-width: 740px;
-  line-height: 1.75;
-  margin-bottom: 2.8rem;
-  font-weight: 300;
-}
-
-/* Key Metrics Strip */
+/* Key Metrics Strip at bottom of hero */
 .hero-metrics-strip {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(14, 16, 21, 0.7);
+  background: rgba(14, 16, 21, 0.8);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-glass);
   border-radius: var(--radius-lg);
-  padding: 1.25rem 2.5rem;
-  gap: 2.2rem;
-  margin-bottom: 3rem;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  padding: 1.25rem 2.8rem;
+  gap: 2.5rem;
+  width: 100%;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
 }
 
 .metric-item {
@@ -452,7 +387,7 @@ h1, h2, h3, h4 {
 
 .metric-num {
   font-family: var(--font-serif);
-  font-size: 1.55rem;
+  font-size: 1.45rem;
   font-weight: 700;
   color: #fff;
   letter-spacing: 0.04em;
@@ -460,7 +395,7 @@ h1, h2, h3, h4 {
 }
 
 .metric-num small {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--gold-primary);
   font-weight: 400;
 }
@@ -479,17 +414,9 @@ h1, h2, h3, h4 {
   background: var(--border-glass);
 }
 
-.hero-cta-group {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 .scroll-down-arrow {
   position: absolute;
-  bottom: 2rem;
+  bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
@@ -515,10 +442,10 @@ h1, h2, h3, h4 {
 }
 
 /* ==========================================================================
-   01. EL PROYECTO (Architectural Manifesto)
+   01. EL PROYECTO
    ========================================================================== */
 .section-manifesto {
-  padding: 8rem 0;
+  padding: 7rem 0;
   position: relative;
 }
 
@@ -607,7 +534,7 @@ h1, h2, h3, h4 {
 }
 
 .manifesto-lead {
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   color: #e5e7eb;
   line-height: 1.8;
   font-weight: 300;
@@ -672,138 +599,110 @@ h1, h2, h3, h4 {
 }
 
 /* ==========================================================================
-   02. RESIDENCIAS & INTERIORES (Curated Spaces Gallery)
+   02. LAS UNIDADES (Uniform Sized 2x2 Grid)
    ========================================================================== */
 .section-spaces {
-  padding: 8rem 0;
+  padding: 7rem 0;
   background: linear-gradient(180deg, var(--bg-main) 0%, #0b0d12 50%, var(--bg-main) 100%);
 }
 
-.spaces-gallery-layout {
+.units-uniform-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
 }
 
-.space-item {
-  position: relative;
+.unit-uniform-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-glass);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 1px solid var(--border-glass);
   box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
   cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.unit-uniform-card:hover {
+  border-color: var(--border-gold);
+  transform: translateY(-4px);
+}
+
+.unit-img-box {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  position: relative;
   background: #000;
 }
 
-.space-item:hover {
-  border-color: var(--border-gold);
-}
-
-.space-featured {
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
-  aspect-ratio: 16 / 10;
-}
-
-.space-secondary {
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
-  aspect-ratio: 16 / 10;
-}
-
-.space-half {
-  aspect-ratio: 16 / 9.5;
-}
-
-.space-img-wrap {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-}
-
-.space-img-wrap img {
+.unit-img-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.space-item:hover .space-img-wrap img {
+.unit-uniform-card:hover .unit-img-box img {
   transform: scale(1.05);
 }
 
-.space-overlay-glass {
+.unit-zoom-badge {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 2rem 2.2rem;
-  background: linear-gradient(to top, rgba(8, 9, 12, 0.95) 0%, rgba(8, 9, 12, 0.6) 70%, transparent 100%);
+  top: 1rem;
+  right: 1rem;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-full);
+  background: rgba(8, 9, 12, 0.8);
+  border: 1px solid var(--border-gold-subtle);
+  color: var(--gold-light);
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  transition: var(--transition-fast);
 }
 
-.space-meta {
-  max-width: 80%;
+.unit-uniform-card:hover .unit-zoom-badge {
+  background: var(--gold-gradient);
+  color: #000;
+  transform: scale(1.08);
 }
 
-.space-category {
-  display: inline-block;
+.unit-content-box {
+  padding: 1.8rem 2.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.unit-category-tag {
   font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.22em;
   color: var(--gold-primary);
   font-weight: 700;
-  margin-bottom: 0.4rem;
 }
 
-.space-title {
+.unit-card-title {
   font-size: 1.35rem;
-  margin-bottom: 0.4rem;
   color: #fff;
   letter-spacing: 0.04em;
 }
 
-.space-desc {
-  font-size: 0.86rem;
+.unit-card-desc {
+  font-size: 0.88rem;
   color: var(--text-muted);
-  line-height: 1.55;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.space-zoom-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-full);
-  background: rgba(197, 160, 89, 0.15);
-  border: 1px solid var(--border-gold);
-  color: var(--gold-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.95rem;
-  flex-shrink: 0;
-  transition: var(--transition-fast);
-}
-
-.space-item:hover .space-zoom-btn {
-  background: var(--gold-gradient);
-  color: #000;
-  transform: scale(1.08);
+  line-height: 1.6;
 }
 
 /* ==========================================================================
    03. AMENITIES & ROOFTOP LIFE
    ========================================================================== */
 .section-amenities {
-  padding: 8rem 0;
+  padding: 7rem 0;
 }
 
 .amenities-triptych {
@@ -885,7 +784,7 @@ h1, h2, h3, h4 {
    04. PLANTA TIPO (Studio Panzoom & Specifications)
    ========================================================================== */
 .section-blueprint {
-  padding: 8rem 0;
+  padding: 7rem 0;
   background: linear-gradient(180deg, var(--bg-main) 0%, #0d0f15 50%, var(--bg-main) 100%);
 }
 
@@ -1096,7 +995,7 @@ h1, h2, h3, h4 {
    05. UBICACIÓN & MASTERPLAN
    ========================================================================== */
 .section-location {
-  padding: 8rem 0;
+  padding: 7rem 0;
 }
 
 .location-composition-grid {
@@ -1196,7 +1095,7 @@ h1, h2, h3, h4 {
 }
 
 /* ==========================================================================
-   06. COMERCIALIZACIÓN & RESPALDO FIDUCIARIO (Footer Monograph)
+   06. FOOTER MONOGRAPH (Fideicomiso Inmobiliario Costa Posadas)
    ========================================================================== */
 .luxury-footer-monograph {
   padding: 4rem 0 3rem;
@@ -1221,36 +1120,10 @@ h1, h2, h3, h4 {
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
 }
 
-.footer-trust-badge {
-  display: inline-block;
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.24em;
-  color: var(--gold-primary);
-  background: rgba(197, 160, 89, 0.12);
-  border: 1px solid var(--border-gold);
-  border-radius: var(--radius-full);
-  padding: 0.35rem 1.1rem;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-}
-
 .footer-main-title {
   font-size: clamp(2rem, 4vw, 2.8rem);
   line-height: 1.2;
-  margin-bottom: 0.85rem;
-}
-
-.footer-fiduciary-legal {
-  max-width: 720px;
-  margin: 0 auto 3.5rem;
-  font-size: 0.92rem;
-  color: var(--text-muted);
-  line-height: 1.7;
-}
-
-.footer-fiduciary-legal strong {
-  color: #fff;
+  margin-bottom: 2.5rem;
 }
 
 .footer-contacts-grid {
@@ -1434,11 +1307,8 @@ h1, h2, h3, h4 {
     aspect-ratio: 16 / 10;
     max-height: 520px;
   }
-  .spaces-gallery-layout {
+  .units-uniform-grid {
     grid-template-columns: 1fr;
-  }
-  .space-featured, .space-secondary {
-    grid-column: 1 / 2;
   }
   .amenities-triptych {
     grid-template-columns: 1fr;
@@ -1477,7 +1347,7 @@ h1, h2, h3, h4 {
     display: inline-flex;
   }
   .hero {
-    padding: 7rem 0 4rem;
+    padding: 7rem 0 3rem;
   }
   .hero-metrics-strip {
     flex-direction: column;
