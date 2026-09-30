@@ -893,16 +893,24 @@ h1, h2, h3, h4 {
   align-items: center;
   justify-content: center;
   user-select: none;
+  touch-action: pan-y;
+}
+
+.plan-interactive-wrapper.zoomed {
   touch-action: none;
 }
 
 .plan-interactive-wrapper img {
-  max-width: 92%;
-  max-height: 92%;
+  max-width: 94%;
+  max-height: 94%;
+  width: auto;
+  height: auto;
   object-fit: contain;
+  margin: auto;
+  display: block;
   transform-origin: center center;
   will-change: transform;
-  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.45));
 }
 
 .plan-footer-bar {

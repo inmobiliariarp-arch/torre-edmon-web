@@ -28,13 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. ARCHITECTURAL PANZOOM STUDIO (STRICT BOUNDARY CLAMPING & FOCAL POINT)
+  // 3. ARCHITECTURAL PANZOOM STUDIO (TOUCH PINCH & MOUSE WHEEL/DRAG)
   const planBox = document.getElementById('plan-interactive-box');
   const planImg = document.getElementById('plan-zoom-img');
-  const zoomValDisplay = document.getElementById('plan-zoom-val');
-  const zoomInBtn = document.getElementById('plan-zoom-in');
-  const zoomOutBtn = document.getElementById('plan-zoom-out');
-  const zoomResetBtn = document.getElementById('plan-zoom-reset');
 
   if (planBox && planImg) {
     let scale = 1;
@@ -55,10 +51,10 @@ document.addEventListener('DOMContentLoaded', () => {
         ? (planImg.naturalWidth / planImg.naturalHeight) 
         : (boxRect.width / boxRect.height);
 
-      let baseW = boxRect.width * 0.92;
+      let baseW = boxRect.width * 0.94;
       let baseH = baseW / imgNaturalRatio;
-      if (baseH > boxRect.height * 0.92) {
-        baseH = boxRect.height * 0.92;
+      if (baseH > boxRect.height * 0.94) {
+        baseH = boxRect.height * 0.94;
         baseW = baseH * imgNaturalRatio;
       }
 
@@ -76,22 +72,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateTransform(animate = false) {
       scale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, scale));
-      if (scale === 1) {
+      if (scale <= 1.02) {
+        scale = 1;
         panX = 0;
         panY = 0;
+        planBox.classList.remove('zoomed');
       } else {
         const clamped = clampPan(panX, panY, scale);
         panX = clamped.x;
         panY = clamped.y;
+        planBox.classList.add('zoomed');
       }
 
       planImg.style.transition = animate ? 'transform 0.28s cubic-bezier(0.2, 0, 0.2, 1)' : 'none';
       planImg.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${scale})`;
       planBox.style.cursor = scale > 1 ? (isDragging ? 'grabbing' : 'grab') : 'zoom-in';
-
-      if (zoomValDisplay) {
-        zoomValDisplay.textContent = `${Math.round(scale * 100)}%`;
-      }
     }
 
     function zoomToPoint(deltaFactor, focalX, focalY) {
@@ -111,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Wheel event with focal zoom
+    // Wheel event with focal zoom for PC Mouse
     planBox.addEventListener('wheel', (e) => {
       e.preventDefault();
       const delta = e.deltaY < 0 ? 1.18 : 0.82;
@@ -120,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Drag to Pan with mouse
     planBox.addEventListener('mousedown', (e) => {
-      if (e.target.closest('.plan-toolbar')) return;
       if (scale > 1) {
         isDragging = true;
         startX = e.clientX - panX;
@@ -144,13 +138,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Touch events for Mobile
+    // Touch events for Mobile (Pinch to Zoom & Touch Pan)
     let initialPinchDist = 0;
     let initialPinchScale = 1;
     let pinchCenter = { x: 0, y: 0 };
 
     planBox.addEventListener('touchstart', (e) => {
-      if (e.target.closest('.plan-toolbar')) return;
       if (e.touches.length === 2) {
         initialPinchDist = getDistance(e.touches[0], e.touches[1]);
         initialPinchScale = scale;
@@ -193,10 +186,10 @@ document.addEventListener('DOMContentLoaded', () => {
       return Math.sqrt(dx * dx + dy * dy);
     }
 
-    // Double-click/double-tap to toggle 1x and 2.3x
+    // Double-click / double-tap to toggle 1x and 2.3x zoom
     let lastClick = 0;
     planBox.addEventListener('click', (e) => {
-      if (e.target.closest('.plan-toolbar') || e.target.closest('.plan-footer-bar')) return;
+      if (e.target.closest('.plan-footer-bar')) return;
       const now = Date.now();
       if (now - lastClick < 320) {
         if (scale > 1.1) {
@@ -209,25 +202,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
       lastClick = now;
-    });
-
-    // Toolbar button listeners
-    zoomInBtn?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      zoomToPoint(1.35);
-    });
-
-    zoomOutBtn?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      zoomToPoint(0.75);
-    });
-
-    zoomResetBtn?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      scale = 1;
-      panX = 0;
-      panY = 0;
-      updateTransform(true);
     });
   }
 
