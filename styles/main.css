@@ -55,13 +55,7 @@ html {
 
 body.dark-editorial {
   font-family: var(--font-sans);
-  background-color: var(--bg-main);
-  background-image: 
-    radial-gradient(circle at 18% 18%, rgba(197, 160, 89, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 82% 42%, rgba(197, 160, 89, 0.07) 0%, transparent 45%),
-    radial-gradient(circle at 25% 72%, rgba(197, 160, 89, 0.07) 0%, transparent 45%),
-    radial-gradient(circle at 75% 90%, rgba(197, 160, 89, 0.09) 0%, transparent 40%);
-  background-attachment: fixed;
+  background-color: #060a08;
   color: var(--text-main);
   line-height: 1.7;
   overflow-x: hidden;
@@ -69,8 +63,8 @@ body.dark-editorial {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Three.js Ambient Particle & Light Canvas */
-#three-canvas {
+/* Botanical Living Raindrop & Dew Background Layer */
+#botanical-bg {
   position: fixed;
   top: 0;
   left: 0;
@@ -78,7 +72,60 @@ body.dark-editorial {
   height: 100vh;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.85;
+  overflow: hidden;
+}
+
+.botanical-img-canvas {
+  position: absolute;
+  top: -6%;
+  left: -6%;
+  width: 112%;
+  height: 112%;
+  background-image: 
+    image-set(
+      url('../assets/backgrounds/gotas_lluvia_hojas_tropicales.webp') type('image/webp'),
+      url('../assets/backgrounds/gotas_lluvia_hojas_tropicales.png') type('image/png')
+    ),
+    url('../assets/backgrounds/gotas_lluvia_hojas_tropicales.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: botanicalDrift 32s ease-in-out infinite alternate;
+  will-change: transform;
+  filter: brightness(0.82) saturate(1.12) contrast(1.08);
+}
+
+@keyframes botanicalDrift {
+  0% {
+    transform: scale(1.02) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.07) translate(-1.2%, 1%);
+  }
+  100% {
+    transform: scale(1.03) translate(1%, -0.8%);
+  }
+}
+
+#rain-dew-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.botanical-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 25%, rgba(4, 9, 7, 0.45) 0%, rgba(3, 6, 5, 0.72) 70%, rgba(2, 4, 3, 0.88) 100%);
 }
 
 .container {
@@ -215,12 +262,12 @@ h1, h2, h3, h4 {
   left: 0;
   width: 100%;
   z-index: 1000;
-  padding: 1.4rem 0;
+  padding: 1rem 0;
   transition: var(--transition-smooth);
 }
 
 .navbar.scrolled {
-  padding: 0.85rem 0;
+  padding: 0.75rem 0;
   background: var(--bg-glass);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -237,36 +284,28 @@ h1, h2, h3, h4 {
 .brand-logo-wrap {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
   text-decoration: none;
 }
 
 .brand-logo-img {
-  height: 38px;
+  height: 75px;
   width: auto;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+  max-width: 290px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.85)) brightness(1.12) contrast(1.08);
+  transition: transform 0.3s ease, height 0.3s ease;
+}
+
+.navbar.scrolled .brand-logo-img {
+  height: 58px;
+}
+
+.brand-logo-wrap:hover .brand-logo-img {
+  transform: scale(1.04);
 }
 
 .brand-text-col {
-  display: flex;
-  flex-direction: column;
-}
-
-.brand-text {
-  font-family: var(--font-serif);
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  color: #fff;
-  line-height: 1.1;
-}
-
-.brand-subtext {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  color: var(--gold-primary);
-  text-transform: uppercase;
+  display: none;
 }
 
 .nav-links {
@@ -1139,18 +1178,104 @@ h1, h2, h3, h4 {
   text-align: center;
 }
 
-.footer-brand-logo {
-  max-width: 220px;
-  height: auto;
-  margin: 0 auto 1.5rem;
-  display: block;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+/* Footer Dual Branding Carousel */
+.footer-carousel-container {
+  position: relative;
+  max-width: 540px;
+  margin: 0 auto 3.2rem;
+  padding: 1.6rem 2.2rem 1.8rem;
+  background: rgba(8, 12, 10, 0.45);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55);
 }
 
-.footer-main-title {
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  line-height: 1.2;
-  margin-bottom: 2.5rem;
+.footer-carousel-track {
+  position: relative;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-carousel-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px) scale(0.96);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.85s;
+  pointer-events: none;
+}
+
+.footer-carousel-slide.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.footer-carousel-label {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--gold-primary);
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.footer-carousel-img {
+  height: auto;
+  max-height: 75px;
+  width: auto;
+  max-width: 290px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.75)) brightness(1.05);
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.footer-carousel-img.logo-costaposadas {
+  max-height: 80px;
+  max-width: 300px;
+}
+
+.footer-carousel-container:hover .footer-carousel-img {
+  transform: scale(1.03);
+}
+
+.footer-carousel-indicators {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.1rem;
+}
+
+.footer-carousel-dot {
+  width: 28px;
+  height: 3px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.18);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.45s ease;
+}
+
+.footer-carousel-dot.active {
+  background: var(--gold-gradient);
+  width: 46px;
+  box-shadow: 0 0 12px rgba(197, 160, 89, 0.55);
 }
 
 .footer-contacts-grid {
@@ -1372,14 +1497,8 @@ h1, h2, h3, h4 {
     padding: 0.75rem 0;
   }
   .brand-logo-img {
-    height: 38px;
-  }
-  .brand-text {
-    font-size: 1.05rem;
-    letter-spacing: 0.12em;
-  }
-  .brand-subtext {
-    font-size: 0.58rem;
+    height: 58px;
+    max-width: 220px;
   }
   .nav-links {
     position: fixed;

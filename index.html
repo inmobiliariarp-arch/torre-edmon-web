@@ -58,7 +58,7 @@
         "@id": "https://edmonposadas.vercel.app/#agent",
         "name": "Inmobiliaria Río Paraná",
         "url": "https://edmonposadas.vercel.app/",
-        "logo": "https://edmonposadas.vercel.app/assets/branding/logo_inmobiliaria_clean.png",
+        "logo": "https://edmonposadas.vercel.app/assets/branding/Logo%20Rio%20Parana%20dorado%20sin%20fondo.png",
         "telephone": "+54-9-3764-765431",
         "email": "inmobiliariarp@gmail.com",
         "address": {
@@ -74,7 +74,7 @@
   }
   </script>
 
-  <link rel="icon" type="image/png" href="assets/branding/logo_inmobiliaria_clean.png">
+  <link rel="icon" type="image/png" href="assets/branding/Torre edmond hd_transparente.png">
 
   <!-- Typography: Cinzel, Cormorant Garamond & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -86,18 +86,21 @@
 </head>
 <body class="dark-editorial">
 
-  <!-- Subtle Three.js Ambient Particle Background -->
-  <canvas id="three-canvas"></canvas>
+  <!-- Living Botanical Background with Water Dewdrops -->
+  <div id="botanical-bg" class="botanical-bg-layer" aria-hidden="true">
+    <div class="botanical-img-canvas"></div>
+    <canvas id="rain-dew-canvas"></canvas>
+    <div class="botanical-overlay"></div>
+  </div>
 
   <!-- Luxury Minimalist Navbar -->
   <nav class="navbar">
     <div class="container nav-container">
-      <a href="#hero" class="brand-logo-wrap">
-        <img src="assets/branding/logo_inmobiliaria_clean.png" alt="Inmobiliaria Río Paraná" class="brand-logo-img">
-        <div class="brand-text-col">
-          <span class="brand-text">TORRE EDMON</span>
-          <span class="brand-subtext">POSADAS • COSTANERA</span>
-        </div>
+      <a href="#hero" class="brand-logo-wrap" aria-label="Torre Edmond">
+        <picture>
+          <source srcset="assets/branding/Torre edmond hd_transparente.webp" type="image/webp">
+          <img src="assets/branding/Torre edmond hd_transparente.png" alt="Torre Edmond" class="brand-logo-img brand-logo-edmond">
+        </picture>
       </a>
 
       <ul class="nav-links">
@@ -465,9 +468,30 @@
   <footer id="contacto" class="luxury-footer-monograph">
     <div class="container">
       <div class="footer-inner-card">
-        <div class="footer-brand-section">
-          <img src="assets/branding/logo_inmobiliaria_clean.png" alt="Inmobiliaria Río Paraná" class="footer-brand-logo">
-          <h2 class="footer-main-title">Fideicomiso Inmobiliario Costa Posadas</h2>
+        <!-- Footer Dual Branding Infinite Carousel -->
+        <div class="footer-carousel-container" aria-label="Entidades del Emprendimiento">
+          <div class="footer-carousel-track">
+            <!-- Slide 1: Inmobiliaria Río Paraná -->
+            <div class="footer-carousel-slide active" data-slide="0">
+              <span class="footer-carousel-label">Comercialización Exclusiva</span>
+              <picture>
+                <source srcset="assets/branding/Logo Rio Parana dorado sin fondo.webp" type="image/webp">
+                <img src="assets/branding/Logo Rio Parana dorado sin fondo.png" alt="Inmobiliaria Río Paraná" class="footer-carousel-img logo-rioparana">
+              </picture>
+            </div>
+            <!-- Slide 2: Fideicomiso Inmobiliario Costa Posadas -->
+            <div class="footer-carousel-slide" data-slide="1">
+              <span class="footer-carousel-label">Desarrollo & Fideicomiso</span>
+              <picture>
+                <source srcset="assets/branding/Logo costa posadas dorado_transparente.webp" type="image/webp">
+                <img src="assets/branding/Logo costa posadas dorado_transparente.png" alt="Fideicomiso Inmobiliario Costa Posadas" class="footer-carousel-img logo-costaposadas">
+              </picture>
+            </div>
+          </div>
+          <div class="footer-carousel-indicators" role="tablist" aria-label="Selector de marca">
+            <button class="footer-carousel-dot active" aria-label="Inmobiliaria Río Paraná" data-target="0"></button>
+            <button class="footer-carousel-dot" aria-label="Fideicomiso Costa Posadas" data-target="1"></button>
+          </div>
         </div>
 
         <div class="footer-contacts-grid">
@@ -523,9 +547,8 @@
     </div>
   </div>
 
-  <!-- Three.js Ambient Dust -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="js/three-scene.js"></script>
+  <!-- Living Botanical Dew Engine -->
+  <script src="js/botanical-dew.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

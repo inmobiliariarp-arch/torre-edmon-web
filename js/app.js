@@ -239,4 +239,57 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeLightbox();
   });
+
+  // 5. FOOTER DUAL BRANDING INFINITE CAROUSEL
+  const carouselContainer = document.querySelector('.footer-carousel-container');
+  const slides = document.querySelectorAll('.footer-carousel-slide');
+  const dots = document.querySelectorAll('.footer-carousel-dot');
+
+  if (carouselContainer && slides.length > 1) {
+    let currentSlide = 0;
+    let carouselTimer = null;
+    const intervalTime = 3800; // 3.8s per slide
+
+    function goToSlide(index) {
+      currentSlide = (index + slides.length) % slides.length;
+      slides.forEach((s, idx) => {
+        s.classList.toggle('active', idx === currentSlide);
+      });
+      dots.forEach((d, idx) => {
+        d.classList.toggle('active', idx === currentSlide);
+      });
+    }
+
+    function startCarousel() {
+      stopCarousel();
+      carouselTimer = setInterval(() => {
+        goToSlide(currentSlide + 1);
+      }, intervalTime);
+    }
+
+    function stopCarousel() {
+      if (carouselTimer) {
+        clearInterval(carouselTimer);
+        carouselTimer = null;
+      }
+    }
+
+    // Interactive controls
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const target = parseInt(dot.dataset.target, 10);
+        if (!isNaN(target)) {
+          goToSlide(target);
+          startCarousel();
+        }
+      });
+    });
+
+    // Pause on hover
+    carouselContainer.addEventListener('mouseenter', stopCarousel);
+    carouselContainer.addEventListener('mouseleave', startCarousel);
+
+    // Initial start
+    startCarousel();
+  }
 });
