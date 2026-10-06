@@ -701,7 +701,14 @@ h1, h2, h3, h4 {
   border-color: var(--border-gold);
 }
 
-/* Spec feature glasscard */
+/* Spec feature glasscard & Pair Wrapper */
+.spec-pair-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  width: 100%;
+}
+
 .spec-feature-glasscard {
   width: 100%;
   box-sizing: border-box;
@@ -710,12 +717,12 @@ h1, h2, h3, h4 {
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-gold-subtle);
   border-radius: var(--radius-md);
-  padding: 1.4rem 1.6rem;
+  padding: 1.25rem 1.45rem;
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1.15rem;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-  height: 100%;
+  transition: border-color 0.4s ease, transform 0.4s ease;
 }
 
 .spec-feature-glasscard:hover {
@@ -1101,7 +1108,8 @@ h1, h2, h3, h4 {
   padding: 2.8rem 2.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 2.4rem;
   box-shadow: var(--card-shadow);
 }
 
