@@ -292,4 +292,133 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial start
     startCarousel();
   }
+
+  // 6. GLASS SLIDING PANELS ENGINE (GLASSDOOR INTERACTIVE DRAWERS)
+  function initGlassSlidingPanels() {
+    const panels = document.querySelectorAll('.glass-sliding-panel');
+
+    panels.forEach(panel => {
+      const tabs = panel.querySelectorAll('.glass-tab-btn');
+      const cards = panel.querySelectorAll('.glass-slide-card');
+      const dots = panel.querySelectorAll('.glass-dot');
+      const prevBtn = panel.querySelector('.glass-ctrl-btn.prev');
+      const nextBtn = panel.querySelector('.glass-ctrl-btn.next');
+
+      if (!cards.length) return;
+
+      let currentIndex = 0;
+
+      function switchSlide(index) {
+        currentIndex = (index + cards.length) % cards.length;
+
+        // Update cards
+        cards.forEach((card, idx) => {
+          card.classList.toggle('active', idx === currentIndex);
+        });
+
+        // Update tabs if present
+        tabs.forEach((tab, idx) => {
+          const isActive = idx === currentIndex;
+          tab.classList.toggle('active', isActive);
+          tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        // Update dots if present
+        dots.forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === currentIndex);
+        });
+      }
+
+      // Tab click events
+      tabs.forEach((tab, idx) => {
+        tab.addEventListener('click', () => switchSlide(idx));
+      });
+
+      // Dot click events
+      dots.forEach((dot, idx) => {
+        dot.addEventListener('click', () => switchSlide(idx));
+      });
+
+      // Prev/Next buttons
+      prevBtn?.addEventListener('click', () => switchSlide(currentIndex - 1));
+      nextBtn?.addEventListener('click', () => switchSlide(currentIndex + 1));
+
+      // Optional Touch swipe inside viewport
+      const viewport = panel.querySelector('.glass-slider-viewport');
+      if (viewport) {
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        viewport.addEventListener('touchstart', (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        viewport.addEventListener('touchend', (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          const diff = touchStartX - touchEndX;
+          if (Math.abs(diff) > 45) {
+            if (diff > 0) {
+              switchSlide(currentIndex + 1); // Swipe left -> Next
+            } else {
+              switchSlide(currentIndex - 1); // Swipe right -> Prev
+            }
+          }
+        }, { passive: true });
+      }
+    });
+  }
+
+  initGlassSlidingPanels();
+
+  // 7. FOOTER CONTACT CHANNELS INTERACTIVE CAROUSEL
+  function initContactCarousel() {
+    const track = document.getElementById('contact-carousel-track');
+    const prevBtn = document.getElementById('contact-carousel-prev');
+    const nextBtn = document.getElementById('contact-carousel-next');
+    const dots = document.querySelectorAll('#contact-carousel-dots .contact-dot');
+    const slides = document.querySelectorAll('.contact-carousel-slide');
+
+    if (!track || !slides.length) return;
+
+    let currentContactIndex = 0;
+    const totalSlides = slides.length;
+
+    function goToContactSlide(index) {
+      currentContactIndex = (index + totalSlides) % totalSlides;
+      track.style.transform = `translateX(-${currentContactIndex * 100}%)`;
+
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentContactIndex);
+      });
+    }
+
+    prevBtn?.addEventListener('click', () => goToContactSlide(currentContactIndex - 1));
+    nextBtn?.addEventListener('click', () => goToContactSlide(currentContactIndex + 1));
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => goToContactSlide(idx));
+    });
+
+    // Touch swipe for contact carousel
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    track.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 40) {
+        if (diff > 0) {
+          goToContactSlide(currentContactIndex + 1);
+        } else {
+          goToContactSlide(currentContactIndex - 1);
+        }
+      }
+    }, { passive: true });
+  }
+
+  initContactCarousel();
 });
