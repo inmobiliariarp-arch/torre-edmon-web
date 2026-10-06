@@ -178,107 +178,46 @@
             Emplazado sobre la zona ribereña más cotizada de la ciudad.
           </p>
 
-          <!-- 4 Pillars: Interactive Glass Sliding Drawer System -->
-          <div class="glass-sliding-panel" id="project-pillars-panel">
-            <div class="glass-slider-nav" role="tablist" aria-label="Pilares del Proyecto">
-              <button class="glass-tab-btn active" data-target="pillar-1" role="tab" aria-selected="true">
-                <i class="fas fa-door-closed"></i> <span>Ascensor</span>
-              </button>
-              <button class="glass-tab-btn" data-target="pillar-2" role="tab" aria-selected="false">
-                <i class="fas fa-fire-burner"></i> <span>Balcón & Asador</span>
-              </button>
-              <button class="glass-tab-btn" data-target="pillar-3" role="tab" aria-selected="false">
-                <i class="fas fa-charging-station"></i> <span>EV Ready</span>
-              </button>
-              <button class="glass-tab-btn" data-target="pillar-4" role="tab" aria-selected="false">
-                <i class="fas fa-shield-halved"></i> <span>Fideicomiso</span>
-              </button>
-            </div>
-
-            <div class="glass-slider-viewport">
-              <!-- Item 1 -->
-              <div class="glass-slide-card active" id="pillar-1" role="tabpanel">
-                <div class="glass-card-header">
-                  <div class="glass-card-icon"><i class="fas fa-door-closed"></i></div>
-                  <div class="glass-card-titles">
-                    <span class="glass-card-kicker">Privacidad Exclusiva</span>
-                    <h3>Ascensor Privado con Palier Individual</h3>
-                  </div>
-                </div>
-                <div class="glass-card-body">
-                  <p>Cada semipiso cuenta con acceso directo garantizando privacidad absoluta desde el núcleo de circulación hasta el interior de su residencia, sin contacto con unidades linderas.</p>
-                </div>
-                <div class="glass-card-footer">
-                  <span class="glass-feature-chip"><i class="fas fa-check-circle"></i> Llegada directa a la unidad</span>
-                  <span class="glass-feature-chip"><i class="fas fa-key"></i> Código y tarjeta de acceso</span>
-                </div>
-              </div>
-
-              <!-- Item 2 -->
-              <div class="glass-slide-card" id="pillar-2" role="tabpanel">
-                <div class="glass-card-header">
-                  <div class="glass-card-icon"><i class="fas fa-fire-burner"></i></div>
-                  <div class="glass-card-titles">
-                    <span class="glass-card-kicker">Vida al Aire Libre</span>
-                    <h3>Balcón Terraza & Asador Propio</h3>
-                  </div>
-                </div>
-                <div class="glass-card-body">
-                  <p>Generosas medidas y vistas francas al Río Paraná. Diseñado como una extensión natural del estar para almuerzos y cenas al aire libre con parrilla incorporada.</p>
-                </div>
-                <div class="glass-card-footer">
-                  <span class="glass-feature-chip"><i class="fas fa-water"></i> Vista panorámica al río</span>
-                  <span class="glass-feature-chip"><i class="fas fa-wind"></i> Ventilación cruzada</span>
-                </div>
-              </div>
-
-              <!-- Item 3 -->
-              <div class="glass-slide-card" id="pillar-3" role="tabpanel">
-                <div class="glass-card-header">
-                  <div class="glass-card-icon"><i class="fas fa-charging-station"></i></div>
-                  <div class="glass-card-titles">
-                    <span class="glass-card-kicker">Sostenibilidad & Futuro</span>
-                    <h3>55 Cocheras Cubiertas EV Ready</h3>
-                  </div>
-                </div>
-                <div class="glass-card-body">
-                  <p>Infraestructura eléctrica proyectada para la incorporación directa de cargadores para vehículos 100% eléctricos e híbridos enchufables en cada plaza.</p>
-                </div>
-                <div class="glass-card-footer">
-                  <span class="glass-feature-chip"><i class="fas fa-bolt"></i> Ductos independientes</span>
-                  <span class="glass-feature-chip"><i class="fas fa-parking"></i> 2 cocheras por unidad</span>
-                </div>
-              </div>
-
-              <!-- Item 4 -->
-              <div class="glass-slide-card" id="pillar-4" role="tabpanel">
-                <div class="glass-card-header">
-                  <div class="glass-card-icon"><i class="fas fa-shield-halved"></i></div>
-                  <div class="glass-card-titles">
-                    <span class="glass-card-kicker">Respaldo Jurídico</span>
-                    <h3>Seguridad y Solidez Fiduciaria</h3>
-                  </div>
-                </div>
-                <div class="glass-card-body">
-                  <p>Estructurado bajo el Fideicomiso Inmobiliario Costa Posadas con administración transparente, patrimonio blindado y comercialización exclusiva de Inmobiliaria Río Paraná.</p>
-                </div>
-                <div class="glass-card-footer">
-                  <span class="glass-feature-chip"><i class="fas fa-file-contract"></i> Ley 24.441 / CCCN</span>
-                  <span class="glass-feature-chip"><i class="fas fa-award"></i> Calidad certificada</span>
+          <!-- 4 Pillars: Automatic Glassdoor Rotating Deck -->
+          <div class="glassdoor-deck" id="pillars-deck" aria-label="Pilares del Proyecto">
+            <div class="glassdoor-slide active">
+              <div class="pillar-card glassdoor-card">
+                <div class="pillar-icon"><i class="fas fa-door-closed"></i></div>
+                <div class="pillar-content">
+                  <h3>Ascensor Privado</h3>
+                  <p>Cada semipiso cuenta con acceso directo garantizando privacidad absoluta.</p>
                 </div>
               </div>
             </div>
 
-            <!-- Dots & Controls -->
-            <div class="glass-slider-controls">
-              <button class="glass-ctrl-btn prev" aria-label="Anterior pilar"><i class="fas fa-chevron-left"></i></button>
-              <div class="glass-slider-dots">
-                <button class="glass-dot active" data-index="0" aria-label="Pilar 1"></button>
-                <button class="glass-dot" data-index="1" aria-label="Pilar 2"></button>
-                <button class="glass-dot" data-index="2" aria-label="Pilar 3"></button>
-                <button class="glass-dot" data-index="3" aria-label="Pilar 4"></button>
+            <div class="glassdoor-slide">
+              <div class="pillar-card glassdoor-card">
+                <div class="pillar-icon"><i class="fas fa-fire-burner"></i></div>
+                <div class="pillar-content">
+                  <h3>Balcón Terraza & Asador</h3>
+                  <p>Generosas medidas y vistas francas al Paraná.</p>
+                </div>
               </div>
-              <button class="glass-ctrl-btn next" aria-label="Siguiente pilar"><i class="fas fa-chevron-right"></i></button>
+            </div>
+
+            <div class="glassdoor-slide">
+              <div class="pillar-card glassdoor-card">
+                <div class="pillar-icon"><i class="fas fa-charging-station"></i></div>
+                <div class="pillar-content">
+                  <h3>55 Cocheras EV Ready</h3>
+                  <p>Infraestructura diseñada para la incorporación de cargadores de vehículos 100% eléctricos e híbridos.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="glassdoor-slide">
+              <div class="pillar-card glassdoor-card">
+                <div class="pillar-icon"><i class="fas fa-shield-halved"></i></div>
+                <div class="pillar-content">
+                  <h3>Seguridad Fiduciaria</h3>
+                  <p>Estructurado bajo el Fideicomiso Inmobiliario Costa Posadas.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -433,109 +372,56 @@
             <span class="spec-area">217 m² / 218 m² Propios</span>
           </div>
 
-          <!-- Glass Sliding Specs Drawer System -->
-          <div class="glass-sliding-panel glass-panel-compact" id="spec-sliding-panel">
-            <div class="glass-slider-nav spec-slider-nav" role="tablist" aria-label="Detalles de Tipología">
-              <button class="glass-tab-btn active" data-target="spec-item-1" role="tab" aria-selected="true">
-                <i class="fas fa-elevator"></i> <span>Acceso</span>
-              </button>
-              <button class="glass-tab-btn" data-target="spec-item-2" role="tab" aria-selected="false">
-                <i class="fas fa-couch"></i> <span>Estar</span>
-              </button>
-              <button class="glass-tab-btn" data-target="spec-item-3" role="tab" aria-selected="false">
-                <i class="fas fa-utensils"></i> <span>Cocina</span>
-              </button>
-              <button class="glass-tab-btn" data-target="spec-item-4" role="tab" aria-selected="false">
-                <i class="fas fa-bed"></i> <span>Suites</span>
-              </button>
-              <button class="glass-tab-btn" data-target="spec-item-5" role="tab" aria-selected="false">
-                <i class="fas fa-car"></i> <span>Cocheras</span>
-              </button>
-            </div>
-
-            <div class="glass-slider-viewport spec-viewport">
-              <!-- Spec 1 -->
-              <div class="glass-slide-card active" id="spec-item-1" role="tabpanel">
-                <div class="glass-card-header">
-                  <div class="glass-card-icon"><i class="fas fa-elevator"></i></div>
-                  <div class="glass-card-titles">
-                    <span class="glass-card-kicker">Circulación Privativa</span>
-                    <h3>Acceso Directo a la Unidad</h3>
-                  </div>
-                </div>
-                <div class="glass-card-body">
-                  <p>Llegada directa del ascensor principal a la unidad garantizando privacidad absoluta y palier privado sin circulaciones compartidas.</p>
-                </div>
-              </div>
-
-              <!-- Spec 2 -->
-              <div class="glass-slide-card" id="spec-item-2" role="tabpanel">
-                <div class="glass-card-header">
-                  <div class="glass-card-icon"><i class="fas fa-couch"></i></div>
-                  <div class="glass-card-titles">
-                    <span class="glass-card-kicker">Espacio Social</span>
-                    <h3>Gran Estar Comedor Apaisado</h3>
-                  </div>
-                </div>
-                <div class="glass-card-body">
-                  <p>Desarrollo apaisado con frente vidriado integral y vista directa al Río Paraná, integrándose naturalmente con el balcón terraza.</p>
-                </div>
-              </div>
-
-              <!-- Spec 3 -->
-              <div class="glass-slide-card" id="spec-item-3" role="tabpanel">
-                <div class="glass-card-header">
-                  <div class="glass-card-icon"><i class="fas fa-utensils"></i></div>
-                  <div class="glass-card-titles">
-                    <span class="glass-card-kicker">Área Gourmet</span>
-                    <h3>Cocina con Gran Isla & Lavadero</h3>
-                  </div>
-                </div>
-                <div class="glass-card-body">
-                  <p>Sector gourmet moderno con amplia mesada tipo isla, mobiliario de diseño premium y salida independiente hacia sector de servicios.</p>
-                </div>
-              </div>
-
-              <!-- Spec 4 -->
-              <div class="glass-slide-card" id="spec-item-4" role="tabpanel">
-                <div class="glass-card-header">
-                  <div class="glass-card-icon"><i class="fas fa-bed"></i></div>
-                  <div class="glass-card-titles">
-                    <span class="glass-card-kicker">Descanso & Confort</span>
-                    <h3>Master Suite + 2 Dormitorios</h3>
-                  </div>
-                </div>
-                <div class="glass-card-body">
-                  <p>Suite principal equipada con vestidor privado y baño en suite de alta gama, complementada con dos confortables dormitorios adicionales.</p>
-                </div>
-              </div>
-
-              <!-- Spec 5 -->
-              <div class="glass-slide-card" id="spec-item-5" role="tabpanel">
-                <div class="glass-card-header">
-                  <div class="glass-card-icon"><i class="fas fa-car"></i></div>
-                  <div class="glass-card-titles">
-                    <span class="glass-card-kicker">Movilidad Eléctrica</span>
-                    <h3>Cocheras EV Ready Asignadas</h3>
-                  </div>
-                </div>
-                <div class="glass-card-body">
-                  <p>Asignación de cocheras cubiertas con ductos canalizados preparados para estación de carga personal de vehículos eléctricos o híbridos.</p>
+          <!-- Automatic Glassdoor Rotating Deck for Specifications -->
+          <div class="glassdoor-deck glassdoor-deck-specs" id="specs-deck" aria-label="Especificaciones de Tipología">
+            <div class="glassdoor-slide active">
+              <div class="spec-feature-glasscard">
+                <div class="spec-icon"><i class="fas fa-elevator"></i></div>
+                <div class="spec-desc">
+                  <strong>Acceso Directo</strong>
+                  <span>Llegada directa del ascensor a la unidad garantizando privacidad.</span>
                 </div>
               </div>
             </div>
 
-            <!-- Dots & Controls -->
-            <div class="glass-slider-controls">
-              <button class="glass-ctrl-btn prev" aria-label="Anterior ítem"><i class="fas fa-chevron-left"></i></button>
-              <div class="glass-slider-dots">
-                <button class="glass-dot active" data-index="0" aria-label="Acceso"></button>
-                <button class="glass-dot" data-index="1" aria-label="Estar"></button>
-                <button class="glass-dot" data-index="2" aria-label="Cocina"></button>
-                <button class="glass-dot" data-index="3" aria-label="Suites"></button>
-                <button class="glass-dot" data-index="4" aria-label="Cocheras"></button>
+            <div class="glassdoor-slide">
+              <div class="spec-feature-glasscard">
+                <div class="spec-icon"><i class="fas fa-couch"></i></div>
+                <div class="spec-desc">
+                  <strong>Gran Estar Comedor</strong>
+                  <span>Desarrollo apaisado con frente vidriado integral y vista directa al Río Paraná.</span>
+                </div>
               </div>
-              <button class="glass-ctrl-btn next" aria-label="Siguiente ítem"><i class="fas fa-chevron-right"></i></button>
+            </div>
+
+            <div class="glassdoor-slide">
+              <div class="spec-feature-glasscard">
+                <div class="spec-icon"><i class="fas fa-utensils"></i></div>
+                <div class="spec-desc">
+                  <strong>Cocina con Isla & Lavadero</strong>
+                  <span>Sector gourmet con gran isla de mesada y conexión al balcón.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="glassdoor-slide">
+              <div class="spec-feature-glasscard">
+                <div class="spec-icon"><i class="fas fa-bed"></i></div>
+                <div class="spec-desc">
+                  <strong>Master Suite + 2 Dormitorios</strong>
+                  <span>Suite principal con área de vestidor y baño en suite de alta gama.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="glassdoor-slide">
+              <div class="spec-feature-glasscard">
+                <div class="spec-icon"><i class="fas fa-car"></i></div>
+                <div class="spec-desc">
+                  <strong>Cocheras con Carga Eléctrica</strong>
+                  <span>Asignación de cocheras cubiertas con ductos para estación de carga personal (EV Ready).</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -563,107 +449,46 @@
           </div>
         </div>
 
-        <!-- Distance Points: Interactive Glass Sliding Drawer -->
-        <div class="glass-sliding-panel glass-panel-location" id="location-milestones-panel">
-          <div class="glass-slider-nav location-slider-nav" role="tablist" aria-label="Tiempos y Distancias">
-            <button class="glass-tab-btn active" data-target="milestone-1" role="tab" aria-selected="true">
-              <i class="fas fa-water"></i> <span>0 MIN</span>
-            </button>
-            <button class="glass-tab-btn" data-target="milestone-2" role="tab" aria-selected="false">
-              <i class="fas fa-city"></i> <span>5 MIN</span>
-            </button>
-            <button class="glass-tab-btn" data-target="milestone-3" role="tab" aria-selected="false">
-              <i class="fas fa-bridge"></i> <span>8 MIN</span>
-            </button>
-            <button class="glass-tab-btn" data-target="milestone-4" role="tab" aria-selected="false">
-              <i class="fas fa-plane-departure"></i> <span>15 MIN</span>
-            </button>
-          </div>
-
-          <div class="glass-slider-viewport">
-            <!-- 0 MIN -->
-            <div class="glass-slide-card active" id="milestone-1" role="tabpanel">
-              <div class="glass-card-header">
-                <div class="milestone-glass-badge">0 MIN</div>
-                <div class="glass-card-titles">
-                  <span class="glass-card-kicker">Inmediatez Ribereña</span>
-                  <h3>Costanera & Ribera Fluvial</h3>
-                </div>
-              </div>
-              <div class="glass-card-body">
-                <p>Acceso directo al paseo peatonal, ciclovías y miradores frente al Río Paraná con circuito gastronómico costero de primer nivel a pasos de su puerta.</p>
-              </div>
-              <div class="glass-card-footer">
-                <span class="glass-feature-chip"><i class="fas fa-person-walking"></i> Acceso peatonal directo</span>
-                <span class="glass-feature-chip"><i class="fas fa-bicycle"></i> Bicisendas y parques</span>
-              </div>
-            </div>
-
-            <!-- 5 MIN -->
-            <div class="glass-slide-card" id="milestone-2" role="tabpanel">
-              <div class="glass-card-header">
-                <div class="milestone-glass-badge">5 MIN</div>
-                <div class="glass-card-titles">
-                  <span class="glass-card-kicker">Corazón Urbano</span>
-                  <h3>Centro Comercial & Cívico</h3>
-                </div>
-              </div>
-              <div class="glass-card-body">
-                <p>Proximidad inmediata a bancos, polos comerciales, instituciones de salud, colegios y dependencias administrativas de la ciudad de Posadas.</p>
-              </div>
-              <div class="glass-card-footer">
-                <span class="glass-feature-chip"><i class="fas fa-building-columns"></i> Bancos y servicios</span>
-                <span class="glass-feature-chip"><i class="fas fa-utensils"></i> Polo gastronómico</span>
-              </div>
-            </div>
-
-            <!-- 8 MIN -->
-            <div class="glass-slide-card" id="milestone-3" role="tabpanel">
-              <div class="glass-card-header">
-                <div class="milestone-glass-badge">8 MIN</div>
-                <div class="glass-card-titles">
-                  <span class="glass-card-kicker">Conexión Internacional</span>
-                  <h3>Puente Posadas - Encarnación</h3>
-                </div>
-              </div>
-              <div class="glass-card-body">
-                <p>Conexión vial ágil con la República del Paraguay, zonas comerciales fronterizas y circuito turístico regional a través del puente San Roque González.</p>
-              </div>
-              <div class="glass-card-footer">
-                <span class="glass-feature-chip"><i class="fas fa-route"></i> Vía directa costanera</span>
-                <span class="glass-feature-chip"><i class="fas fa-globe-americas"></i> Corredor Mercosur</span>
-              </div>
-            </div>
-
-            <!-- 15 MIN -->
-            <div class="glass-slide-card" id="milestone-4" role="tabpanel">
-              <div class="glass-card-header">
-                <div class="milestone-glass-badge">15 MIN</div>
-                <div class="glass-card-titles">
-                  <span class="glass-card-kicker">Conectividad Aérea</span>
-                  <h3>Aeropuerto Posadas (PSS)</h3>
-                </div>
-              </div>
-              <div class="glass-card-body">
-                <p>Vuelos diarios directos con Buenos Aires, Córdoba y principales destinos nacionales a través del Aeropuerto Internacional Libertador General José de San Martín.</p>
-              </div>
-              <div class="glass-card-footer">
-                <span class="glass-feature-chip"><i class="fas fa-plane"></i> Vuelos regulares directos</span>
-                <span class="glass-feature-chip"><i class="fas fa-car-side"></i> Rápido acceso por Acceso Oeste</span>
+        <!-- Distance Points: Automatic Glassdoor Rotating Deck -->
+        <div class="glassdoor-deck glassdoor-deck-milestones" id="milestones-deck" aria-label="Tiempos y Distancias">
+          <div class="glassdoor-slide active">
+            <div class="milestone-card glassdoor-card">
+              <div class="milestone-time">0 MIN</div>
+              <div class="milestone-info">
+                <h4>Costanera & Ribera Fluvial</h4>
+                <p>Acceso directo al paseo peatonal, ciclovías y miradores frente al río.</p>
               </div>
             </div>
           </div>
 
-          <!-- Controls -->
-          <div class="glass-slider-controls">
-            <button class="glass-ctrl-btn prev" aria-label="Anterior distancia"><i class="fas fa-chevron-left"></i></button>
-            <div class="glass-slider-dots">
-              <button class="glass-dot active" data-index="0" aria-label="0 MIN"></button>
-              <button class="glass-dot" data-index="1" aria-label="5 MIN"></button>
-              <button class="glass-dot" data-index="2" aria-label="8 MIN"></button>
-              <button class="glass-dot" data-index="3" aria-label="15 MIN"></button>
+          <div class="glassdoor-slide">
+            <div class="milestone-card glassdoor-card">
+              <div class="milestone-time">5 MIN</div>
+              <div class="milestone-info">
+                <h4>Centro Comercial & Cívico</h4>
+                <p>Proximidad inmediata a bancos, polos gastronómicos y dependencias administrativas.</p>
+              </div>
             </div>
-            <button class="glass-ctrl-btn next" aria-label="Siguiente distancia"><i class="fas fa-chevron-right"></i></button>
+          </div>
+
+          <div class="glassdoor-slide">
+            <div class="milestone-card glassdoor-card">
+              <div class="milestone-time">8 MIN</div>
+              <div class="milestone-info">
+                <h4>Puente Internacional Posadas - Encarnación</h4>
+                <p>Conexión vial ágil con la República del Paraguay y zonas comerciales fronterizas.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glassdoor-slide">
+            <div class="milestone-card glassdoor-card">
+              <div class="milestone-time">15 MIN</div>
+              <div class="milestone-info">
+                <h4>Aeropuerto Internacional Posadas (PSS)</h4>
+                <p>Vuelos diarios directos con Buenos Aires, Córdoba y principales destinos nacionales.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -700,75 +525,47 @@
           </div>
         </div>
 
-        <!-- Interactive Contact Carousel with WhatsApp, Email, Dirección, Folleto -->
-        <div class="contact-carousel-wrapper" aria-label="Canales de Contacto">
-          <button class="contact-carousel-nav prev" id="contact-carousel-prev" aria-label="Canal anterior">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-
-          <div class="contact-carousel-viewport">
-            <div class="contact-carousel-track" id="contact-carousel-track">
-              <!-- Slide 1: WhatsApp -->
-              <div class="contact-carousel-slide" data-index="0">
-                <a href="https://wa.me/5493764765431?text=Hola,%20deseo%20comunicarme%20por%20Torre%20Edmon" target="_blank" class="contact-card highlight">
-                  <div class="contact-card-icon"><i class="fab fa-whatsapp"></i></div>
-                  <div class="contact-card-text">
-                    <span class="contact-label">WhatsApp Directo</span>
-                    <strong class="contact-value">+54 9 376 476-5431</strong>
-                    <span class="contact-subtext">Atención inmediata personalizada</span>
-                  </div>
-                </a>
+        <!-- Automatic Rotating Contact Carousel (Seamless & Responsive) -->
+        <div class="contact-auto-carousel" id="contact-auto-carousel" aria-label="Canales de Contacto">
+          <div class="contact-auto-slide active">
+            <a href="https://wa.me/5493764765431?text=Hola,%20deseo%20comunicarme%20por%20Torre%20Edmon" target="_blank" class="contact-card highlight">
+              <div class="contact-card-icon"><i class="fab fa-whatsapp"></i></div>
+              <div class="contact-card-text">
+                <span class="contact-label">WhatsApp</span>
+                <strong class="contact-value">Contacto Directo (+54 9 376 476-5431)</strong>
               </div>
+            </a>
+          </div>
 
-              <!-- Slide 2: Folleto PDF -->
-              <div class="contact-carousel-slide" data-index="1">
-                <a href="assets/folleto_torre_edmon_posadas.pdf" download="FOLLETO_TORRE_EDMON_Posadas.pdf" class="contact-card highlight-gold">
-                  <div class="contact-card-icon"><i class="fas fa-file-pdf"></i></div>
-                  <div class="contact-card-text">
-                    <span class="contact-label">Dossier Digital</span>
-                    <strong class="contact-value">Descargar Folleto (PDF)</strong>
-                    <span class="contact-subtext">Planos, renders y memoria descriptiva</span>
-                  </div>
-                </a>
+          <div class="contact-auto-slide">
+            <a href="assets/folleto_torre_edmon_posadas.pdf" download="FOLLETO_TORRE_EDMON_Posadas.pdf" class="contact-card highlight-gold">
+              <div class="contact-card-icon"><i class="fas fa-file-pdf"></i></div>
+              <div class="contact-card-text">
+                <span class="contact-label">Dossier Digital</span>
+                <strong class="contact-value">Descargar Folleto (PDF)</strong>
               </div>
+            </a>
+          </div>
 
-              <!-- Slide 3: Correo Oficial -->
-              <div class="contact-carousel-slide" data-index="2">
-                <a href="mailto:inmobiliariarp@gmail.com" class="contact-card">
-                  <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
-                  <div class="contact-card-text">
-                    <span class="contact-label">Correo Oficial</span>
-                    <strong class="contact-value">inmobiliariarp@gmail.com</strong>
-                    <span class="contact-subtext">Consultas técnicas e institucionales</span>
-                  </div>
-                </a>
+          <div class="contact-auto-slide">
+            <a href="mailto:inmobiliariarp@gmail.com" class="contact-card">
+              <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
+              <div class="contact-card-text">
+                <span class="contact-label">Correo Oficial</span>
+                <strong class="contact-value">inmobiliariarp@gmail.com</strong>
               </div>
+            </a>
+          </div>
 
-              <!-- Slide 4: Ubicación -->
-              <div class="contact-carousel-slide" data-index="3">
-                <div class="contact-card">
-                  <div class="contact-card-icon"><i class="fas fa-location-dot"></i></div>
-                  <div class="contact-card-text">
-                    <span class="contact-label">Oficinas Comerciales</span>
-                    <strong class="contact-value">Jujuy 2255 PB • Posadas</strong>
-                    <span class="contact-subtext">Lunes a Viernes de 8:00 a 17:00 hs</span>
-                  </div>
-                </div>
+          <div class="contact-auto-slide">
+            <div class="contact-card">
+              <div class="contact-card-icon"><i class="fas fa-location-dot"></i></div>
+              <div class="contact-card-text">
+                <span class="contact-label">Ubicación</span>
+                <strong class="contact-value">Jujuy 2255 PB • Posadas, Misiones</strong>
               </div>
             </div>
           </div>
-
-          <button class="contact-carousel-nav next" id="contact-carousel-next" aria-label="Canal siguiente">
-            <i class="fas fa-chevron-right"></i>
-          </button>
-        </div>
-
-        <!-- Contact Carousel Dots -->
-        <div class="contact-carousel-dots" id="contact-carousel-dots">
-          <button class="contact-dot active" data-index="0" aria-label="WhatsApp"></button>
-          <button class="contact-dot" data-index="1" aria-label="Folleto PDF"></button>
-          <button class="contact-dot" data-index="2" aria-label="Correo Oficial"></button>
-          <button class="contact-dot" data-index="3" aria-label="Dirección"></button>
         </div>
 
         <div class="footer-bottom-bar">

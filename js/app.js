@@ -293,132 +293,86 @@ document.addEventListener('DOMContentLoaded', () => {
     startCarousel();
   }
 
-  // 6. GLASS SLIDING PANELS ENGINE (GLASSDOOR INTERACTIVE DRAWERS)
-  function initGlassSlidingPanels() {
-    const panels = document.querySelectorAll('.glass-sliding-panel');
+  // 6. AUTOMATIC GLASSDOOR ROTATING DECKS ENGINE (PURE ELEGANCE, ZERO INTERVENTION)
+  function initGlassdoorDecks() {
+    const decks = [
+      { id: 'pillars-deck', interval: 4000 },
+      { id: 'specs-deck', interval: 3800 },
+      { id: 'milestones-deck', interval: 4200 }
+    ];
 
-    panels.forEach(panel => {
-      const tabs = panel.querySelectorAll('.glass-tab-btn');
-      const cards = panel.querySelectorAll('.glass-slide-card');
-      const dots = panel.querySelectorAll('.glass-dot');
-      const prevBtn = panel.querySelector('.glass-ctrl-btn.prev');
-      const nextBtn = panel.querySelector('.glass-ctrl-btn.next');
-
-      if (!cards.length) return;
+    decks.forEach(cfg => {
+      const deckEl = document.getElementById(cfg.id);
+      if (!deckEl) return;
+      const slides = deckEl.querySelectorAll('.glassdoor-slide');
+      if (slides.length <= 1) return;
 
       let currentIndex = 0;
+      let timer = null;
 
-      function switchSlide(index) {
-        currentIndex = (index + cards.length) % cards.length;
-
-        // Update cards
-        cards.forEach((card, idx) => {
-          card.classList.toggle('active', idx === currentIndex);
-        });
-
-        // Update tabs if present
-        tabs.forEach((tab, idx) => {
-          const isActive = idx === currentIndex;
-          tab.classList.toggle('active', isActive);
-          tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
-        });
-
-        // Update dots if present
-        dots.forEach((dot, idx) => {
-          dot.classList.toggle('active', idx === currentIndex);
-        });
+      function rotate() {
+        slides[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % slides.length;
+        slides[currentIndex].classList.add('active');
       }
 
-      // Tab click events
-      tabs.forEach((tab, idx) => {
-        tab.addEventListener('click', () => switchSlide(idx));
-      });
-
-      // Dot click events
-      dots.forEach((dot, idx) => {
-        dot.addEventListener('click', () => switchSlide(idx));
-      });
-
-      // Prev/Next buttons
-      prevBtn?.addEventListener('click', () => switchSlide(currentIndex - 1));
-      nextBtn?.addEventListener('click', () => switchSlide(currentIndex + 1));
-
-      // Optional Touch swipe inside viewport
-      const viewport = panel.querySelector('.glass-slider-viewport');
-      if (viewport) {
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        viewport.addEventListener('touchstart', (e) => {
-          touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        viewport.addEventListener('touchend', (e) => {
-          touchEndX = e.changedTouches[0].screenX;
-          const diff = touchStartX - touchEndX;
-          if (Math.abs(diff) > 45) {
-            if (diff > 0) {
-              switchSlide(currentIndex + 1); // Swipe left -> Next
-            } else {
-              switchSlide(currentIndex - 1); // Swipe right -> Prev
-            }
-          }
-        }, { passive: true });
+      function start() {
+        if (!timer) timer = setInterval(rotate, cfg.interval);
       }
-    });
-  }
 
-  initGlassSlidingPanels();
-
-  // 7. FOOTER CONTACT CHANNELS INTERACTIVE CAROUSEL
-  function initContactCarousel() {
-    const track = document.getElementById('contact-carousel-track');
-    const prevBtn = document.getElementById('contact-carousel-prev');
-    const nextBtn = document.getElementById('contact-carousel-next');
-    const dots = document.querySelectorAll('#contact-carousel-dots .contact-dot');
-    const slides = document.querySelectorAll('.contact-carousel-slide');
-
-    if (!track || !slides.length) return;
-
-    let currentContactIndex = 0;
-    const totalSlides = slides.length;
-
-    function goToContactSlide(index) {
-      currentContactIndex = (index + totalSlides) % totalSlides;
-      track.style.transform = `translateX(-${currentContactIndex * 100}%)`;
-
-      dots.forEach((dot, idx) => {
-        dot.classList.toggle('active', idx === currentContactIndex);
-      });
-    }
-
-    prevBtn?.addEventListener('click', () => goToContactSlide(currentContactIndex - 1));
-    nextBtn?.addEventListener('click', () => goToContactSlide(currentContactIndex + 1));
-
-    dots.forEach((dot, idx) => {
-      dot.addEventListener('click', () => goToContactSlide(idx));
-    });
-
-    // Touch swipe for contact carousel
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    track.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    track.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      const diff = touchStartX - touchEndX;
-      if (Math.abs(diff) > 40) {
-        if (diff > 0) {
-          goToContactSlide(currentContactIndex + 1);
-        } else {
-          goToContactSlide(currentContactIndex - 1);
+      function stop() {
+        if (timer) {
+          clearInterval(timer);
+          timer = null;
         }
       }
-    }, { passive: true });
+
+      deckEl.addEventListener('mouseenter', stop);
+      deckEl.addEventListener('mouseleave', start);
+      deckEl.addEventListener('touchstart', stop, { passive: true });
+      deckEl.addEventListener('touchend', start, { passive: true });
+
+      start();
+    });
   }
 
-  initContactCarousel();
+  initGlassdoorDecks();
+
+  // 7. AUTOMATIC CONTACT CAROUSEL (SEAMLESS ROTATION)
+  function initContactAutoCarousel() {
+    const carouselEl = document.getElementById('contact-auto-carousel');
+    if (!carouselEl) return;
+    const slides = carouselEl.querySelectorAll('.contact-auto-slide');
+    if (slides.length <= 1) return;
+
+    let currentIndex = 0;
+    let timer = null;
+    const intervalTime = 3600;
+
+    function rotate() {
+      slides[currentIndex].classList.remove('active');
+      currentIndex = (currentIndex + 1) % slides.length;
+      slides[currentIndex].classList.add('active');
+    }
+
+    function start() {
+      if (!timer) timer = setInterval(rotate, intervalTime);
+    }
+
+    function stop() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    carouselEl.addEventListener('mouseenter', stop);
+    carouselEl.addEventListener('mouseleave', start);
+    carouselEl.addEventListener('touchstart', stop, { passive: true });
+    carouselEl.addEventListener('touchend', start, { passive: true });
+
+    start();
+  }
+
+  initContactAutoCarousel();
 });
