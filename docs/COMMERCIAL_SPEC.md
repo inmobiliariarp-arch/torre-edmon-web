@@ -1,4 +1,4 @@
-# 🏢 Especificación Comercial y Marco Fiduciario — Torre Edmond
+# 🏢 Especificación Comercial y Marco Fiduciario — Torre Edmon
 
 ## 🏛️ 1. Estructura Jurídica: Fideicomiso Costa Posadas
 - **Denominación**: Fideicomiso Inmobiliario Costa Posadas

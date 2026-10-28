@@ -1,0 +1,11 @@
+# Archivos y carpetas de desarrollo interno que no deben desplegarse a producción
+scripts/
+docs/
+catalogo_assets.html
+FOLLETO TORRE EDMON-2.pdf
+assets/raw_pure_extracted/
+assets/catalog_previews/
+*.py
+*.md
+.git/
+.github/

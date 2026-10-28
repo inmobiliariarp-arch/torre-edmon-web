@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /scripts/
+Disallow: /docs/
+Disallow: /catalogo_assets.html
 
 Sitemap: https://edmonposadas.vercel.app/sitemap.xml

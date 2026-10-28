@@ -1,7 +1,7 @@
 ---
 id: "MKT-TORRE-EDMON-2026"
 tipo: "Plan Estratégico de Marketing Digital y Redes Sociales 100% Orgánico"
-proyecto: "[[Dossier Web - Torre Edmond (Fideicomiso Costa Posadas)]]"
+proyecto: "[[Dossier Web - Torre Edmon (Fideicomiso Costa Posadas)]]"
 fideicomiso: "[[Dossier Completo - Fideicomiso Costa Posadas]]"
 fiduciario: "Don Ruben Mario Carreño"
 comercializa: "Inmobiliaria Río Paraná"
@@ -18,7 +18,7 @@ tags:
 # 🚀 Plan Maestro de Marketing Digital Orgánico — Torre Edmon
 
 > **Estrategia Integral 100% Gratuita para Posicionamiento en Google (SEO), Instagram, TikTok, Facebook y Cierre por WhatsApp**  
-> **Desarrollo**: Torre Edmon (Edificio Edmond), Posadas Misiones  
+> **Desarrollo**: Torre Edmon (Torre Edmon), Posadas Misiones  
 > **Comercialización Exclusiva**: Inmobiliaria Río Paraná  
 > **Sitio Web Oficial**: [https://edmonposadas.vercel.app](https://edmonposadas.vercel.app)
 

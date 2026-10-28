@@ -1,4 +1,4 @@
-# 🏢 Torre Edmond — Sitio Web Oficial e Interactivo
+# 🏢 Torre Edmon — Sitio Web Oficial e Interactivo
 
 [![Despliegue GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Deploy-success?style=for-the-badge&logo=github)](https://inmobiliariarp-arch.github.io/torre-edmon-web/)
 [![Three.js](https://img.shields.io/badge/Three.js-WebGL%203D-black?style=for-the-badge&logo=three.js)](https://threejs.org/)
@@ -6,7 +6,7 @@
 [![WebP Optimized](https://img.shields.io/badge/Images-WebP%20Optimized-orange?style=for-the-badge)](https://developers.google.com/speed/webp)
 [![Fideicomiso Costa Posadas](https://img.shields.io/badge/Fideicomiso-Costa%20Posadas-gold?style=for-the-badge)](docs/COMMERCIAL_SPEC.md)
 
-Sitio web interactivo de alta gama para la presentación arquitectónica y comercialización de **Torre Edmond (Edificio Edmond)**, desarrollado bajo el marco legal del **Fideicomiso Inmobiliario Costa Posadas** (Administrado por Don Ruben Mario Carreño) y comercializado de forma exclusiva por **Inmobiliaria Río Paraná** en la ciudad de Posadas, Misiones.
+Sitio web interactivo de alta gama para la presentación arquitectónica y comercialización de **Torre Edmon (Torre Edmon)**, desarrollado bajo el marco legal del **Fideicomiso Inmobiliario Costa Posadas** (Administrado por Don Ruben Mario Carreño) y comercializado de forma exclusiva por **Inmobiliaria Río Paraná** en la ciudad de Posadas, Misiones.
 
 ---
 
@@ -25,7 +25,7 @@ Sitio web interactivo de alta gama para la presentación arquitectónica y comer
 ## 📂 Estructura del Repositorio
 
 ```
-📦 Torre Edmond - Web Project
+📦 Torre Edmon - Web Project
  ┣ 📄 index.html                # Single Page Application (SPA) principal
  ┣ 📄 catalogo_assets.html      # Visor y curador de activos digitales
  ┣ 📄 vercel.json               # Configuración optimizada de despliegue en Vercel
@@ -85,6 +85,6 @@ Luego visita en tu navegador: `http://localhost:8000`
 
 ## 🏛️ Créditos e Institucional
 
-- **Desarrollo Inmobiliario**: Torre Edmond / Edificio Edmond
+- **Desarrollo Inmobiliario**: Torre Edmon / Torre Edmon
 - **Marco Legal**: [[Fideicomiso Costa Posadas]] — Administrador Fiduciario Don Ruben Mario Carreño
 - **Comercialización Exclusiva**: Inmobiliaria Río Paraná (Jujuy 2255 PB, Posadas, Misiones)

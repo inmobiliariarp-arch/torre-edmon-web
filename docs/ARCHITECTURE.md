@@ -1,7 +1,7 @@
 # 🏛️ Arquitectura Técnica y Especificación del Sistema Frontend
 
 ## 🌐 Visión General
-El sitio web interactivo de **Torre Edmond** fue diseñado con una arquitectura **Vanilla Modular de Cero Dependencias Pesadas** (*Zero-Bloat SPA*). Prioriza la máxima velocidad de carga, fluidez a 60 FPS, adaptabilidad a cualquier tamaño de pantalla y una experiencia de usuario de lujo arquitectónico.
+El sitio web interactivo de **Torre Edmon** fue diseñado con una arquitectura **Vanilla Modular de Cero Dependencias Pesadas** (*Zero-Bloat SPA*). Prioriza la máxima velocidad de carga, fluidez a 60 FPS, adaptabilidad a cualquier tamaño de pantalla y una experiencia de usuario de lujo arquitectónico.
 
 ---
 
