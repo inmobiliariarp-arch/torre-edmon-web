@@ -730,50 +730,6 @@ h1, h2, h3, h4 {
 }
 
 /* ==========================================================================
-   FOOTER CONTACT AUTOMATIC CAROUSEL (ZERO GAP / ZERO LAYOUT JUMP)
-   ========================================================================== */
-.contact-auto-carousel {
-  display: grid;
-  grid-template-areas: "contact-cell";
-  align-items: stretch;
-  width: 100%;
-  max-width: 680px;
-  margin: 0 auto 3.5rem;
-  box-sizing: border-box;
-  perspective: 1200px;
-}
-
-.contact-auto-slide {
-  grid-area: contact-cell;
-  width: 100%;
-  box-sizing: border-box;
-  opacity: 0;
-  visibility: hidden;
-  transform: rotateY(12deg) scale(0.97);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              visibility 0.8s;
-  pointer-events: none;
-  display: flex;
-  justify-content: center;
-}
-
-.contact-auto-slide.active {
-  opacity: 1;
-  visibility: visible;
-  transform: rotateY(0deg) scale(1);
-  pointer-events: auto;
-}
-
-.contact-auto-slide .contact-card {
-  margin: 0 auto;
-  width: 100%;
-  box-sizing: border-box;
-  justify-content: center;
-  height: 100%;
-}
-
-/* ==========================================================================
    02. LAS UNIDADES (Uniform Sized 2x2 Grid)
    ========================================================================== */
 .section-spaces {
@@ -1407,22 +1363,24 @@ h1, h2, h3, h4 {
 .footer-contacts-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 3.5rem;
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+  width: 100%;
 }
 
 .contact-card {
   background: var(--bg-surface-elevated);
   border: 1px solid var(--border-glass);
   border-radius: var(--radius-md);
-  padding: 1.5rem;
+  padding: 1.25rem 1.15rem;
   display: flex;
   align-items: center;
-  gap: 1.1rem;
+  gap: 1rem;
   text-decoration: none;
   color: var(--text-main);
   transition: var(--transition-fast);
   text-align: left;
+  box-sizing: border-box;
 }
 
 .contact-card:hover {
@@ -1741,9 +1699,6 @@ h1, h2, h3, h4 {
   .spec-feature-glasscard {
     padding: 1.15rem 1.25rem;
     gap: 1rem;
-  }
-  .contact-auto-carousel {
-    margin-bottom: 2.25rem;
   }
   .footer-contacts-grid {
     gap: 0.85rem;

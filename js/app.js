@@ -338,41 +338,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initGlassdoorDecks();
 
-  // 7. AUTOMATIC CONTACT CAROUSEL (SEAMLESS ROTATION)
-  function initContactAutoCarousel() {
-    const carouselEl = document.getElementById('contact-auto-carousel');
-    if (!carouselEl) return;
-    const slides = carouselEl.querySelectorAll('.contact-auto-slide');
-    if (slides.length <= 1) return;
 
-    let currentIndex = 0;
-    let timer = null;
-    const intervalTime = 3600;
-
-    function rotate() {
-      slides[currentIndex].classList.remove('active');
-      currentIndex = (currentIndex + 1) % slides.length;
-      slides[currentIndex].classList.add('active');
-    }
-
-    function start() {
-      if (!timer) timer = setInterval(rotate, intervalTime);
-    }
-
-    function stop() {
-      if (timer) {
-        clearInterval(timer);
-        timer = null;
-      }
-    }
-
-    carouselEl.addEventListener('mouseenter', stop);
-    carouselEl.addEventListener('mouseleave', start);
-    carouselEl.addEventListener('touchstart', stop, { passive: true });
-    carouselEl.addEventListener('touchend', start, { passive: true });
-
-    start();
-  }
-
-  initContactAutoCarousel();
 });
