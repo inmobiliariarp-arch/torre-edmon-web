@@ -1,13 +1,25 @@
-﻿# Environment / OS
+# Internal Development Scripts & Local Paths (preserved locally, untracked on public repo)
+scripts/
+*.py
+
+# Internal Strategic Documentation
+docs/
+
+# Internal Curation Workbench
+catalogo_assets.html
+
+# Duplicate Large PDF in Root
+FOLLETO TORRE EDMON-2.pdf
+
+# Environment / OS
 .DS_Store
 Thumbs.db
 
-# Temporary Media & Large PDF
-# *.pdf
+# Temporary Media & Raw Assets
 assets/slides_hires/
 assets/raw_extracted/
 
-# Python
+# Python & Vercel
 __pycache__/
 *.pyc
 .vercel
